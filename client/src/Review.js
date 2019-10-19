@@ -33,53 +33,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Review() {
+export default function Review({data}) {
   const classes = useStyles();
-
+  console.log(data);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Order summary
+        Please review the entered details.
       </Typography>
-      <List disablePadding>
-        {products.map(product => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
-        <ListItem className={classes.listItem}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" className={classes.total}>
-            $34.06
-          </Typography>
-        </ListItem>
-      </List>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Shipping
-          </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
-        </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            Payment details
-          </Typography>
-          <Grid container>
-            {payments.map(payment => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Typography gutterBottom>Name: {data.firstName + ' ' + data.lastName}</Typography>
+          <Typography gutterBottom>Email: {data.email}</Typography>
+          <Typography gutterBottom>Address: {data.address}</Typography> 
+          <Typography gutterBottom>City: {data.city}</Typography>
+          <Typography gutterBottom>City: {data.zip}</Typography>
+          <Typography gutterBottom>State: {data.state}</Typography>
+          <Typography gutterBottom>Country: {data.country}</Typography>
           </Grid>
-        </Grid>
       </Grid>
     </React.Fragment>
   );
