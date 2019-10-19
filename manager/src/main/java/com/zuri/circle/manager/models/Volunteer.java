@@ -16,13 +16,36 @@ public class Volunteer implements Serializable {
 	@Id
 	private String id;
 	private User user;
+	
 	private List<Events> listOfEvents;
-	public Volunteer(String id, User user, List<Events> listOfEvents) {
+	private String email;
+	
+	
+	
+	
+	public Volunteer(String id, User user, List<Events> listOfEvents, String email) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.listOfEvents = listOfEvents;
+		this.email = email;
 	}
+
+	
+	public Volunteer() {
+		
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	public String getId() {
 		return id;
 	}
