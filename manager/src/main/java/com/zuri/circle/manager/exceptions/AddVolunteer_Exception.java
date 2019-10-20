@@ -1,14 +1,11 @@
 package com.zuri.circle.manager.exceptions;
 
-public class ZuriException extends Exception {
-
-	/**
-	 * 
-	 */
+public class AddVolunteer_Exception extends Exception{
+	
 	private static final long serialVersionUID = 1L;
-	private String errorMessage;
+	private final String errorMessage;
 
-	public ZuriException(String errorMessage) {
+	public AddVolunteer_Exception(String errorMessage) {
 		super();
 		this.errorMessage = errorMessage;
 	}

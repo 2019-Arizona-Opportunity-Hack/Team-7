@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "Donar")
+@Document(collection = "Donor")
 public class Donor implements Serializable{
 	
 	/**
@@ -18,16 +18,29 @@ public class Donor implements Serializable{
 	@Id
 	private String id;
 	private User user;
+	private String email;
 	private String totalAmount;
 	private Map<Donations,String> donationStat = new HashMap<>();
-	public Donor(String donarId, User user, String totalAmount, Map<Donations, String> donationStat) {
+	
+	public Donor(String id, User user, String email, String totalAmount, Map<Donations, String> donationStat) {
 		super();
-		this.id = donarId;
+		this.id = id;
 		this.user = user;
+		this.email = email;
 		this.totalAmount = totalAmount;
 		this.donationStat = donationStat;
 	}
 	
+public Donor() {
+	
+}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getId() {
 		return id;
 	}

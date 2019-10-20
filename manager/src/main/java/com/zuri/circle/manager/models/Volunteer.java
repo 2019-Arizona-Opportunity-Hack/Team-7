@@ -1,6 +1,7 @@
 package com.zuri.circle.manager.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -16,13 +17,36 @@ public class Volunteer implements Serializable {
 	@Id
 	private String id;
 	private User user;
+	
 	private List<Events> listOfEvents;
-	public Volunteer(String id, User user, List<Events> listOfEvents) {
+	private String email;
+	
+	
+	
+	
+	public Volunteer(String id, User user, String email) {
 		super();
 		this.id = id;
 		this.user = user;
-		this.listOfEvents = listOfEvents;
+		this.listOfEvents = new ArrayList<Events>();
+		this.email = email;
 	}
+
+	
+	public Volunteer() {
+		
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	public String getId() {
 		return id;
 	}
