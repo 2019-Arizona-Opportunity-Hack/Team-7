@@ -2,7 +2,10 @@ package com.zuri.circle.manager.models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import org.joda.time.tz.UTCProvider;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 
@@ -18,12 +21,12 @@ public class Donations implements Serializable{
 	private String amount;
 	@CreatedDate
 	private Date donationDate;
-	public Donations(String donationId, String donarId, String amount, Date donationDate) {
+	public Donations(String donationId, String donarId, String amount) {
 		super();
 		this.donationId = donationId;
 		this.donerId = donarId;
 		this.amount = amount;
-		this.donationDate = donationDate;
+		this.donationDate = new Date(0);
 	}
 	public Donations() {}
 	public String getDonationId() {

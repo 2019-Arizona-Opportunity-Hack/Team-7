@@ -17,20 +17,23 @@ public class Events implements Serializable {
 	private String eventId;
 	private String location;
 	private String name;
-	private DateTime startTime;
-	private DateTime endTime;
+	private String startTime;
+	private String endTime;
+	private String eventDate;
 	private List<Volunteer> volunteers;
 
-	public Events(String eventId, String location, String name, DateTime startTime, DateTime endTime) {
-
+	public Events(String eventId, String location, String name, String startTime, String endTime, String eventDate) {
 		super();
 		this.eventId = eventId;
 		this.location = location;
 		this.name = name;
 		this.startTime = startTime;
 		this.endTime = endTime;
+		this.eventDate = eventDate;
 		this.volunteers = new ArrayList<>();
 	}
+
+	public Events() {}
 
 	public String getEventId() {
 		return eventId;
@@ -56,20 +59,28 @@ public class Events implements Serializable {
 		this.name = name;
 	}
 
-	public DateTime getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(DateTime startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 
-	public DateTime getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(DateTime endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	public String getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(String eventDate) {
+		this.eventDate = eventDate;
 	}
 
 	public List<Volunteer> getVolunteers() {
