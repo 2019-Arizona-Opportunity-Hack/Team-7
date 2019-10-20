@@ -521,7 +521,7 @@ export default function Checkout() {
   const handleNext = () => {
     if(activeStep === steps.length - 1){
       console.log('submit');
-        axios.post('https://zuricircle.azurewebsites.net/register', {
+        axios.post('http://54.172.164.131:8080/register', {
             'firstName': firstName,
             'lastName': lastName,
             'email': email,
