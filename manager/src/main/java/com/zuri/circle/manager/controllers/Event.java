@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zuri.circle.manager.exceptions.AddVolunteerToEvent_Exception;
-import com.zuri.circle.manager.exceptions.AddVolunteer_Exception;
 import com.zuri.circle.manager.exceptions.RegisterEvent_Exception;
 import com.zuri.circle.manager.models.Events;
 import com.zuri.circle.manager.models.Response;

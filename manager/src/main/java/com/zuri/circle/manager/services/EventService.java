@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.mongodb.MongoWriteException;
 import com.zuri.circle.manager.exceptions.AddVolunteerToEvent_Exception;
-import com.zuri.circle.manager.exceptions.AddVolunteer_Exception;
 import com.zuri.circle.manager.exceptions.RegisterEvent_Exception;
 import com.zuri.circle.manager.models.Events;
-import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.models.Volunteer;
 import com.zuri.circle.manager.repo.EventRepo;
 import com.zuri.circle.manager.repo.VolunteerRepo;
@@ -36,9 +34,8 @@ public class EventService {
 				throw new RegisterEvent_Exception("Error while writing the object to database." + e.getMessage());
 			}
 		}else {
-			throw new RegisterEvent_Exception("The Volunteer object is null");
-		}
-		
+			throw new RegisterEvent_Exception("The event object is null");
+		}		
 	}
 	
 	public void AddVolunteerToEvent(String eventId, String volunteerId) throws AddVolunteerToEvent_Exception {
@@ -63,5 +60,4 @@ public class EventService {
 			throw new AddVolunteerToEvent_Exception("Error while writing the object to database." + e.getMessage());
 		}
 	}
-
 }
