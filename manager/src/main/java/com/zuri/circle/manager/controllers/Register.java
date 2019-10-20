@@ -44,7 +44,7 @@ public class Register {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "app/register")
-	public @ResponseBody ResponseEntity<Response> registerApp(@RequestBody User user) {
+	public @ResponseBody Donor registerApp(@RequestBody User user) {
 
 		logger.info("Entering the Register User Method", user);
 		return registerAppUser(user);
