@@ -2,8 +2,8 @@
 Steps to run the system: 
 1.Donwload the solution. 
 2.Go inside the terminal and cd to client directory.
-3.docker build -t demo-frontend:v1 .
-docker run -it -p 3000:80 demo-frontend:v1
+3.Run,docker build -t demo-frontend:v1 .
+& docker run -it -p 3000:80 demo-frontend:v1
 4.Go to manager directory and run mvn clean install. 
 5.Run ,docker build -t demo-backend:v1 .
 6.Run,docker run -it -p 3000:80 demo-backend:v1
