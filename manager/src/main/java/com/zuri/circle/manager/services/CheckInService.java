@@ -25,12 +25,12 @@ public class CheckInService {
 	public boolean handleCheckIn(CheckInEvent checkIn) {
 		
 	
-		String strVolunteerId = checkIn.getVolunteerId();
+		String strVolunteerId = checkIn.getEmail();
 		String strEventId =  checkIn.getEventId();
 		
 		if(strVolunteerId!=null && StringUtils.isNotBlank(strVolunteerId)
 				&& strEventId!=null && StringUtils.isNotBlank(strEventId)) {
-		    Optional<Volunteer> volunteer =  volunteerRepo.findById(strVolunteerId);
+		    Optional<Volunteer> volunteer =  volunteerRepo.findByEmail(strEventId);
 		    if(volunteer.isPresent())
 		    {
 		       List<Events> list =  volunteer.get().getListOfEvents();

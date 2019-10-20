@@ -4,12 +4,16 @@ import java.io.Serializable;
 
 public class CheckInEvent implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String eventId;
-	private String volunteerId;
+	private String email;
 	public CheckInEvent(String eventId, String volunteerId) {
 		super();
 		this.eventId = eventId;
-		this.volunteerId = volunteerId;
+		this.email = volunteerId;
 	}
 	
 	public CheckInEvent() {
@@ -24,13 +28,15 @@ public class CheckInEvent implements Serializable{
 		this.eventId = eventId;
 	}
 
-	public String getVolunteerId() {
-		return volunteerId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setVolunteerId(String volunteerId) {
-		this.volunteerId = volunteerId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+
 	
 	
 
