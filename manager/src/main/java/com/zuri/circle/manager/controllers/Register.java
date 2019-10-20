@@ -24,7 +24,7 @@ import com.zuri.circle.manager.services.NeedHelpService;
 import com.zuri.circle.manager.services.VolunteerService;
 
 @RestController
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Register {
 	public static Logger logger = LogManager.getLogger(Register.class);
 
