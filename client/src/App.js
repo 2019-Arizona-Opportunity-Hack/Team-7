@@ -13,15 +13,7 @@ function App() {
   useEffect(() => {
     setRedirect(true); // Probably need to set redirect based on some condition
   }, []);
-
-  if (redirect) {
-    return (
-      <Redirect to='/home' />
-    );
-  }
- 
-else
- {
+  
   return (
     <div>
       <PrimarySearchAppBar />
@@ -48,7 +40,6 @@ else
       </Router>
     </div>
   );
- }
-}
+  }
 
 export default App;

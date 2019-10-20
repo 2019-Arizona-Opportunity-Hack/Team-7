@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom'
 
 function Application() {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const renderView = () => {
     if (!loggedIn) {
       return (

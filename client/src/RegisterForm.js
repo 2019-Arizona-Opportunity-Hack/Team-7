@@ -22,6 +22,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import axios from 'axios';
 
 function Copyright() {
   return (
@@ -104,13 +105,11 @@ export default function Checkout() {
   const [zip, setZip] = React.useState("");
   const [country, setCountry] = React.useState("");
   const [userType, setUserType] = React.useState("Volunteer");
-  const [sex, setSex] = React.useState("");
-  const [assistanceType, setAssistanceType] = React.useState("");
   const [prefferedMode, setPrefferedMode] = React.useState("");
   const [isMarried, setMarried] = React.useState("");
   const [isChildren, setChildren] = React.useState("");
   const [reason, setReason] = React.useState("");
-  const [request, setRequest] = React.useState("");
+  const [request, setRequest] = React.useState([]);
   const [isalreadyRequested, setAlreadyRequested] = React.useState("");
   const [
     alreadyRequestedLocation,
@@ -216,7 +215,7 @@ export default function Checkout() {
                 value={request}
                 onChange={event => {
                   event.preventDefault();
-                  setRequest(event.target.value);
+                  setRequest([...request, event.target.value]);
                 }}
               >
                 <MenuItem value={"Food Box"}>Food Box</MenuItem>
@@ -505,8 +504,6 @@ export default function Checkout() {
               zip: zip,
               country: country,
               userType: userType,
-              sex: sex,
-              assistanceType: assistanceType,
               prefferedMode: prefferedMode,
               isMarried: isMarried,
               isChildren: isChildren,
@@ -522,7 +519,34 @@ export default function Checkout() {
   };
 
   const handleNext = () => {
+    if(activeStep === steps.length - 1){
+      console.log('submit');
+        axios.post('https://zuricircle.azurewebsites.net/register', {
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email,
+            'address': address,
+            'city': city,
+            'state': state,
+            'zip': zip,
+            'country': country,
+            'userType': userType,
+            'prefferedContact': prefferedMode,
+            'isMarried': isMarried,
+            'isChildren': isChildren,
+            'reason': reason,
+            'request': request,
+            'phoneNumber': phoneNumber
+        })
+        .then((response) => {
+          console.log(response);
+        }, (error) => {
+          console.log(error);
+        });
+    }
     setActiveStep(activeStep + 1);
+
+   
   };
 
   const handleBack = () => {
@@ -548,12 +572,11 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Excellent, You're registered now.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Your registration was successful. We have emailed you the
+                  confirmation.
                 </Typography>
               </React.Fragment>
             ) : (

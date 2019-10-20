@@ -66,15 +66,15 @@ export default function SignInSide( {setLoggedIn, history}) {
   };
 
   const onLogin = () => {
-    // axios.post('/login', user)
-    // .then((response) => {
-    //   console.log(response);
-    //   setLoggedIn(true);
-    // }, (error) => {
-    //   console.log(error);
-    //   setLoggedIn(false)
-    // });
-    setLoggedIn(true);
+    axios.post('/login', user)
+    .then((response) => {
+      console.log(response);
+      setLoggedIn(true);
+    }, (error) => {
+      console.log(error);
+      setLoggedIn(false)
+    });
+    //setLoggedIn(true);
   }
 
   return (
