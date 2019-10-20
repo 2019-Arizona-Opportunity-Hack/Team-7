@@ -20,7 +20,9 @@ public class Events implements Serializable{
 	private DateTime startTime;
 	private DateTime endTime;
 	private List<Volunteer> volunteers;
+
 	public Events(String eventId, String location, String name, DateTime startTime, DateTime endTime) {
+ 
 		super();
 		this.eventId = eventId;
 		this.location = location;
