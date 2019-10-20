@@ -1,0 +1,56 @@
+PODS:
+  - Alamofire (5.0.0-rc.2)
+  - ARSLineProgress (3.1.0)
+  - Braintree/Card (4.30.0):
+    - Braintree/Core
+  - Braintree/Core (4.30.0)
+  - Braintree/PaymentFlow (4.30.0):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.30.0)
+  - Braintree/UnionPay (4.30.0):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (7.4.0):
+    - BraintreeDropIn/DropIn (= 7.4.0)
+  - BraintreeDropIn/DropIn (7.4.0):
+    - Braintree/Card (~> 4.27)
+    - Braintree/Core (~> 4.27)
+    - Braintree/PaymentFlow (~> 4.27)
+    - Braintree/PayPal (~> 4.27)
+    - Braintree/UnionPay (~> 4.27)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (7.4.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.2)
+  - ARSLineProgress
+  - BraintreeDropIn
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ARSLineProgress
+    - Braintree
+    - BraintreeDropIn
+
+SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  ARSLineProgress: 60778657c69491796c3faf5b834c72924c405833
+  Braintree: 6c7b531ed255701cc69666a2f02d1324a2d95c41
+  BraintreeDropIn: ee413ce4f94b86179e5ff3f98eb847219610bb96
+
+PODFILE CHECKSUM: 25bc9f7299f4b1bfc7d6b6caee55f77ad5212a7d
+
+COCOAPODS: 1.8.4

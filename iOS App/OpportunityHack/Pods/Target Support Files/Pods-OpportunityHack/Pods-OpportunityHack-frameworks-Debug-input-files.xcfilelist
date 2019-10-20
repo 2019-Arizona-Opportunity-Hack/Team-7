@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-OpportunityHack/Pods-OpportunityHack-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ARSLineProgress/ARSLineProgress.framework
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework
+${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework
+${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework

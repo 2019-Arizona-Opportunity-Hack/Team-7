@@ -1,0 +1,6 @@
+framework module Pods_OpportunityHack {
+  umbrella header "Pods-OpportunityHack-umbrella.h"
+
+  export *
+  module * { export * }
+}
