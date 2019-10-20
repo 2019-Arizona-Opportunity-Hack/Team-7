@@ -58,7 +58,7 @@ const TotalProfit = props => {
               color="inherit"
               variant="h3"
             >
-              $23,200
+              $ {props.totalRevenue}
             </Typography>
           </Grid>
           <Grid item>

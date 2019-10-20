@@ -52,10 +52,9 @@ const statusColors = {
 
 const LatestOrders = props => {
   const { className, ...rest } = props;
-
   const classes = useStyles();
-
-  const [orders] = useState(mockData);
+  const [orders] = useState(props.latestDonations);
+  console.log('asdfads'+orders);
 
   return (
     <Card
@@ -72,45 +71,20 @@ const LatestOrders = props => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Order Ref</TableCell>
-                  <TableCell>Customer</TableCell>
-                  <TableCell sortDirection="desc">
-                    <Tooltip
-                      enterDelay={300}
-                      title="Sort"
-                    >
-                      <TableSortLabel
-                        active
-                        direction="desc"
-                      >
-                        Date
-                      </TableSortLabel>
-                    </Tooltip>
-                  </TableCell>
-                  <TableCell>Status</TableCell>
+                  <TableCell>Donation Ref</TableCell>
+                  <TableCell>Amount</TableCell>
+                  
                 </TableRow>
               </TableHead>
               <TableBody>
-                {orders.map(order => (
+                {props.latestDonations.map(order => (
                   <TableRow
                     hover
-                    key={order.id}
+                    key={order.donationId}
                   >
-                    <TableCell>{order.ref}</TableCell>
-                    <TableCell>{order.customer.name}</TableCell>
-                    <TableCell>
-                      {moment(order.createdAt).format('DD/MM/YYYY')}
-                    </TableCell>
-                    <TableCell>
-                      <div className={classes.statusContainer}>
-                        <StatusBullet
-                          className={classes.status}
-                          color={statusColors[order.status]}
-                          size="sm"
-                        />
-                        {order.status}
-                      </div>
-                    </TableCell>
+                    <TableCell>{order.donationId}</TableCell>
+                    <TableCell>{order.amount}</TableCell>
+                    
                   </TableRow>
                 ))}
               </TableBody>
