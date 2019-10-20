@@ -1,6 +1,7 @@
 package com.zuri.circle.manager.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -19,15 +20,14 @@ public class Events implements Serializable{
 	private DateTime startTime;
 	private DateTime endTime;
 	private List<Volunteer> volunteers;
-	public Events(String eventId, String location, String name, DateTime startTime, DateTime endTime,
-			List<Volunteer> volunteers) {
+	public Events(String eventId, String location, String name, DateTime startTime, DateTime endTime) {
 		super();
 		this.eventId = eventId;
 		this.location = location;
 		this.name = name;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.volunteers = volunteers;
+		this.volunteers = new ArrayList<>();
 	}
 	public String getEventId() {
 		return eventId;
