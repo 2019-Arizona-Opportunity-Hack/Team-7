@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection="Events")
 public class Events implements Serializable {
 
 	/**
@@ -20,7 +22,7 @@ public class Events implements Serializable {
 	private String startTime;
 	private String endTime;
 	private String eventDate;
-	private List<Volunteer> volunteers;
+	private List<Volunteer> volunteers = new ArrayList<>();
 
 	public Events(String eventId, String location, String name, String startTime, String endTime, String eventDate) {
 		super();
@@ -30,7 +32,7 @@ public class Events implements Serializable {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.eventDate = eventDate;
-		this.volunteers = new ArrayList<>();
+		
 	}
 
 	public Events() {}

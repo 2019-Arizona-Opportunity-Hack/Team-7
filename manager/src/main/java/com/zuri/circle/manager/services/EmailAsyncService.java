@@ -7,11 +7,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 import com.zuri.circle.manager.models.Events;
 import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.models.Volunteer;
 
+@Service
 public class EmailAsyncService {
 
 	public static Logger logger = LogManager.getLogger(EmailAsyncService.class);
@@ -30,9 +32,9 @@ public class EmailAsyncService {
 	    			user =  vol.getUser();
 	        //String intermediate = sendSMS(user.getUserContactNo(),"You have successfully registered to Movierecommeder App");
 	    	//sendSMS(user.getUserContactNo(), "OTP-"+sendOtp(user.getUserName()).toString());
-	    			url.append("http://localhost/");
+	    			url.append("http://zuriCircle/event/add/");
 	    			url.append(event.getEventId());
-	    			url.append("/");
+	    			url.append("&");
 	    			url.append(vol.getId());
 	       emailNotific.sendMail(user, url.toString());
 	       url.delete(0, length);

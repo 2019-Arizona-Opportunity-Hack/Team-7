@@ -1,6 +1,7 @@
 package com.zuri.circle.manager.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,17 +14,24 @@ import com.zuri.circle.manager.models.Events;
 import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.models.Volunteer;
 import com.zuri.circle.manager.repo.EventRepo;
+import com.zuri.circle.manager.repo.VolunteerRepo;
 
 @Service
 public class EventService {
 
 	@Autowired
 	EventRepo eventrepo;
+	@Autowired
+	VolunteerRepo volrepo;
+	
+	@Autowired
+	EmailAsyncService asyncService;
 	
 	public void registerEvent(Events event) throws RegisterEvent_Exception {
 		if(event != null) {
 			try {
-				eventrepo.insert(event);
+				event =eventrepo.insert(event);
+				asyncService.async(volrepo.findAll(), event);
 			}catch(MongoWriteException e) {
 				throw new RegisterEvent_Exception("Error while writing the object to database." + e.getMessage());
 			}
@@ -33,10 +41,23 @@ public class EventService {
 		
 	}
 	
-	public void AddVolunteerToEvent(Events event, Volunteer volunteer) throws AddVolunteerToEvent_Exception {
+	public void AddVolunteerToEvent(String eventId, String volunteerId) throws AddVolunteerToEvent_Exception {
 		try {
-			List<Volunteer> listOfVolunteer = event.getVolunteers();
-			listOfVolunteer.add(volunteer);
+			Events event =  eventrepo.findByEventId(eventId);
+			Optional<Volunteer> volunteer = volrepo.findById(volunteerId);
+			if(volunteer.isPresent() && event!=null) {
+				Volunteer  vol = volunteer.get();
+				List<Volunteer> list =  event.getVolunteers();
+				if(list!=null ) {
+					list.add(vol);
+					event.setVolunteers(list);
+				}
+				
+			}
+			
+			
+			
+		
 			eventrepo.save(event);
 		}catch(MongoWriteException e) {
 			throw new AddVolunteerToEvent_Exception("Error while writing the object to database." + e.getMessage());

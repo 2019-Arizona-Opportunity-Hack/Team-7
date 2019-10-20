@@ -9,5 +9,5 @@ import com.zuri.circle.manager.models.Events;
 
 public interface EventRepo extends MongoRepository<Events, String>{
 
-	public Optional<Donor> findByEventId(String id);
+	public Events findByEventId(String id);
 }

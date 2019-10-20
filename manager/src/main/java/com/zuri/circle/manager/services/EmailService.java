@@ -20,6 +20,7 @@ public class EmailService {
 	@Autowired
 	private MailBuilder mailBuilder;
 
+	
 	private JavaMailSender mailSender;
 
 	@Autowired
@@ -39,7 +40,7 @@ public class EmailService {
 			helper.setFrom("kmrprabhu93@gmail.com");
 			helper.setSubject("Registration Success");
 			// message.setText(content, true);
-			String content = mailBuilder.build(user.getFirstName(), "Thank You for registering");
+			String content = mailBuilder.build(user.getFirstName(), html);
 			helper.setText(content, true);
 			
 		};
