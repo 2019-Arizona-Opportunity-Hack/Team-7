@@ -24,7 +24,7 @@ import com.zuri.circle.manager.services.LoginService;
 public class AppLogin {
 	public static Logger logger = LogManager.getLogger(AppLogin.class);
 	@Autowired
-	private static LoginService loginService;
+	private  LoginService loginService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
 	public Donor donation(@RequestBody Login login){
