@@ -34,11 +34,10 @@ public class NeedHelp implements Serializable{
 	public void setHelpType(List<String> helpType) {
 		this.helpType = helpType;
 	}
-	public NeedHelp(String id, User user, List<String> helpType) {
+	public NeedHelp(String id, User user) {
 		super();
 		this.id = id;
 		this.user = user;
-		this.helpType = helpType;
 	}
       
 	public NeedHelp() {

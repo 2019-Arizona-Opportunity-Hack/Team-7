@@ -1,6 +1,7 @@
 package com.zuri.circle.manager.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
 	
@@ -18,8 +19,12 @@ public class User implements Serializable {
 	private String country;
 	private String userType;
 	private String preferredContact;
+	List<String> helpType;
+	
+	
+	
 	public User(String firstName, String lastName, String email, String address, String city, String state, String zip,
-			String country, String userType, String preferredContact) {
+			String country, String userType, String preferredContact, List<String> helpType) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -31,12 +36,9 @@ public class User implements Serializable {
 		this.country = country;
 		this.userType = userType;
 		this.preferredContact = preferredContact;
+		this.helpType = helpType;
 	}
-	
-	
-	public User() {
-		
-	}
+
 
 
 	public String getFirstName() {
@@ -44,9 +46,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 
 
 	public String getLastName() {
@@ -54,9 +58,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 
 
 	public String getEmail() {
@@ -64,9 +70,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 	public String getAddress() {
@@ -74,9 +82,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 
 
 	public String getCity() {
@@ -84,9 +94,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 
 
 	public String getState() {
@@ -94,9 +106,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setState(String state) {
 		this.state = state;
 	}
+
 
 
 	public String getZip() {
@@ -104,9 +118,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+
 
 
 	public String getCountry() {
@@ -114,9 +130,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
 
 
 	public String getUserType() {
@@ -124,9 +142,11 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+
 
 
 	public String getPreferredContact() {
@@ -134,10 +154,30 @@ public class User implements Serializable {
 	}
 
 
+
 	public void setPreferredContact(String preferredContact) {
 		this.preferredContact = preferredContact;
 	}
-	
+
+
+
+	public List<String> getHelpType() {
+		return helpType;
+	}
+
+
+
+	public void setHelpType(List<String> helpType) {
+		this.helpType = helpType;
+	}
+
+
+
+	public User() {
+		
+	}
+
+
 	
 	
 	
