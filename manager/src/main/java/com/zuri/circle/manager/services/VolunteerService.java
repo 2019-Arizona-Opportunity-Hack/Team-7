@@ -19,7 +19,7 @@ public class VolunteerService {
 	public void addVolunteer(User user) throws AddVolunteer_Exception{
 		if(user != null) {
 			try {
-				Volunteer volunteer = new Volunteer(null, user, new ArrayList<>(), user.getEmail());
+				Volunteer volunteer = new Volunteer(null, user, user.getEmail());
 				volunteerRepo.insert(volunteer);
 			}catch(MongoWriteException e) {
 				throw new AddVolunteer_Exception("Error while writing the object to database." + e.getMessage());
