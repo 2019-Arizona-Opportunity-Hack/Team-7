@@ -1,5 +1,6 @@
 package com.zuri.circle.manager.services;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +12,20 @@ import com.zuri.circle.manager.repo.DonorRepo;
 @Service
 public class LoginService {
 	@Autowired
-	DonorRepo donarRepo;
+	DonorRepo donorRepo;
 	
 	public boolean login(String email, String password) throws Login_Exception {
-		if(email != null) {
+		if(email != null && StringUtils.isNotBlank(email)) {
 			try {
-				Donor donor = donarRepo.findByEmail(email);
-				if(donor.getPassword() == password)
+				Donor donor = donorRepo.findByEmail(email);
+				if(donor!=null) {
+				if(donor.getPassword().equals(password))
 					return true;
 				else
 					return false;
+				}else {
+					throw new Login_Exception("User doesnot exist");
+				}
 				
 				
 			}catch(MongoWriteException e) {

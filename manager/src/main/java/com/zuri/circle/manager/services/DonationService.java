@@ -25,13 +25,13 @@ public class DonationService {
 		// TODO Auto-generated method stub
 		if(id != null) {
 			try {
-				String uuid = UUID.randomUUID().toString();
+				
 				Optional<Donor> donorOptional = donorRepo.findById(id);
 				Donor donor = donorOptional.get();
-				Donations donation = new Donations(uuid,donor,amount);
-				donationRepo.insert(donation);
+				Donations donation = new Donations(null,donor,amount);
+				donation = donationRepo.insert(donation);
 				Map<String, String> donorRecord = donor.getDonationStat();
-				donorRecord.put(uuid, amount);
+				donorRecord.put(donation.getDonationId(), amount);
 				int totalAmt = Integer.parseInt(donor.getTotalAmount()) + Integer.parseInt(amount);
 				donor.setTotalAmount(Integer.toString(totalAmt));
 				donorRepo.save(donor);

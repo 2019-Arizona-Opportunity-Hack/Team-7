@@ -32,7 +32,7 @@ public class EmailAsyncService {
 	    			user =  vol.getUser();
 	        //String intermediate = sendSMS(user.getUserContactNo(),"You have successfully registered to Movierecommeder App");
 	    	//sendSMS(user.getUserContactNo(), "OTP-"+sendOtp(user.getUserName()).toString());
-	    			url.append("http://zuriCircle/event/add/");
+	    			url.append("http://54.172.164.131/event/add/");
 	    			url.append(event.getEventId());
 	    			url.append("&");
 	    			url.append(vol.getId());
