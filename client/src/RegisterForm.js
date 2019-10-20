@@ -422,6 +422,7 @@ export default function Checkout() {
           <Grid item xs={12} sm={6}>
             <div>Preffered Contact Method</div>
             <RadioGroup
+              required
               aria-label="category"
               name="category"
               value={prefferedMode}
@@ -507,10 +508,11 @@ export default function Checkout() {
               sex: sex,
               assistanceType: assistanceType,
               prefferedMode: prefferedMode,
-              isMarried: setMarried,
-              isChildren: setChildren,
-              reason: setReason,
-              request: setRequest
+              isMarried: isMarried,
+              isChildren: isChildren,
+              reason: reason,
+              request: request,
+              phone: phoneNumber
             }}
           />
         );
