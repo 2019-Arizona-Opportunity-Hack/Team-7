@@ -12,6 +12,8 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import CreateEvent from "./createEvent";
+import axios from 'axios';
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: "80%",
@@ -59,33 +61,26 @@ export default function DetailedExpansionPanel() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    //   const result = await axios(
-    //     'https://localhost:8080/eventlist',
-    //   );
-    const result = {
-      events: [
-        {
-          title: "Event #1",
-          count: 10,
-          location: "Phoenix",
-          time: "31st Oct, 2019, 16:00pm"
-        },
-        {
-          title: "Event #2",
-          count: 10,
-          location: "Tempe",
-          time: "31st Oct, 2019, 16:00pm"
-        }
-      ]
-    };
-    setData(result.events);
+      
+
+      // axios('http://54.172.164.131:8080/events')
+      // .then(responseArr => {
+      //   //this will be executed only when all requests are complete
+      //   console.log('Events: ', responseArr.events);
+      //   setData(responseArr.events);
+      // });
+      axios.get('http://54.172.164.131:8080/events')
+      .then(res => {
+        console.log(res);
+        setData(res.data.events);
+      });
   }, []);
   return (
     <div className={classes.root}>
       <Typography variant="h6" gutterBottom>
         <b>Event Details</b>
       </Typography>
-      {data.map((event, index) => (
+      {data && data.map((event, index) => (
         <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
@@ -93,7 +88,7 @@ export default function DetailedExpansionPanel() {
             id={"panel" + index}
           >
             <div className={classes.column}>
-              <Typography className={classes.heading}>{event.title}</Typography>
+              <Typography className={classes.heading}>{event.name}</Typography>
             </div>
             <div className={classes.column}>
               <Typography className={classes.secondaryHeading}>
@@ -106,12 +101,14 @@ export default function DetailedExpansionPanel() {
               <Typography variant="caption">
                 Location: {event.location}
                 <br />
-                Event Time: {event.time}
+                Event Time: {event.eventDate}
               </Typography>
             </div>
             <div className={classes.column}>
               <Typography variant="caption">
-                Volunteer Count: {event.count}
+                Volunteer Count: {event.volunteers ? event.volunteer.length : 0}
+                <br />
+                Duration: {event.duration}
               </Typography>
             </div>
           </ExpansionPanelDetails>

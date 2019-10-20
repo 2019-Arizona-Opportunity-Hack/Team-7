@@ -7,12 +7,13 @@ export const data = {
       label: 'This year',
       backgroundColor: palette.primary.main,
       data: [18, 5, 19, 27, 29, 19, 20]
-    },
-    {
-      label: 'Last year',
-      backgroundColor: palette.neutral,
-      data: [11, 20, 12, 29, 30, 25, 13]
     }
+    // },
+    // {
+    //   label: 'Last year',
+    //   backgroundColor: palette.neutral,
+    //   data: [11, 20, 12, 29, 30, 25, 13]
+    // }
   ]
 };
 

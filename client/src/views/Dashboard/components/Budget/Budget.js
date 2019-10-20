@@ -64,7 +64,7 @@ const Budget = props => {
             >
               TOTAL EVENTS
             </Typography>
-            <Typography variant="h3">27</Typography>
+            <Typography variant="h3">{props.totalEvents ? props.totalEvents : '0'}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>

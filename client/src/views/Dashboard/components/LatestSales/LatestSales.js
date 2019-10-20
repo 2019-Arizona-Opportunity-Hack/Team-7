@@ -52,21 +52,12 @@ const LatestSales = props => {
       <CardContent>
         <div className={classes.chartContainer}>
           <Bar
-            data={data}
+            data={props.top5Donors}
             options={options}
           />
         </div>
       </CardContent>
       <Divider />
-      {/* <CardActions className={classes.actions}>
-        <Button
-          color="primary"
-          size="small"
-          variant="text"
-        >
-          Overview <ArrowRightIcon />
-        </Button>
-      </CardActions> */}
     </Card>
   );
 };

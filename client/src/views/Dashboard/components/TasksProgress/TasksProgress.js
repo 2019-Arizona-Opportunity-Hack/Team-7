@@ -62,7 +62,7 @@ const TasksProgress = props => {
             >
               UPCOMING EVENTS
             </Typography>
-            <Typography variant="h3">5</Typography>
+            <Typography variant="h3">{props.upcomingEvents ? props.upcomingEvents: '0'}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
