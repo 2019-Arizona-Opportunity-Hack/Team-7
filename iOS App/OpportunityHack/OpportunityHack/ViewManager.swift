@@ -11,11 +11,15 @@ import UIKit
 
 class ViewManager {
     
-    static func updateLoggedInRootVC(){
+    static func updateLoggedInRootVC(_ id: String, name: String){
         guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DonorViewController") as? DonorViewController else {
             return
         }
-        UIApplication.shared.windows.first?.rootViewController = rootVC
+        rootVC.id = id
+        UserDefaults.standard.set(id, forKey: Utils.donorIDKey)
+        rootVC.userName = name
+        let navigationController = UINavigationController(rootViewController: rootVC)
+        UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
 
     }

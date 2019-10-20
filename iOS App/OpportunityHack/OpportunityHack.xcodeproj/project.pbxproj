@@ -22,6 +22,16 @@
 		974807CB235BC61E006FBAEB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974807CA235BC61E006FBAEB /* LoginViewController.swift */; };
 		974807CE235BC822006FBAEB /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974807CD235BC822006FBAEB /* ViewManager.swift */; };
 		974807D1235BCB74006FBAEB /* DonorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974807D0235BCB74006FBAEB /* DonorViewController.swift */; };
+		9749F8CC235CD90D00C10963 /* WebUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C0235CD90D00C10963 /* WebUtil.swift */; };
+		9749F8CD235CD90D00C10963 /* JSONUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C1235CD90D00C10963 /* JSONUtil.swift */; };
+		9749F8CE235CD90D00C10963 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C3235CD90D00C10963 /* TaskDelegate.swift */; };
+		9749F8CF235CD90D00C10963 /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C4235CD90D00C10963 /* WebServiceManager.swift */; };
+		9749F8D0235CD90D00C10963 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C5235CD90D00C10963 /* Service.swift */; };
+		9749F8D1235CD90D00C10963 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C6235CD90D00C10963 /* NetworkServiceManager.swift */; };
+		9749F8D2235CD90D00C10963 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C8235CD90D00C10963 /* MultipartFormData.swift */; };
+		9749F8D3235CD90D00C10963 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C9235CD90D00C10963 /* Upload.swift */; };
+		9749F8D4235CD90D00C10963 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8CA235CD90D00C10963 /* NetworkError.swift */; };
+		9749F8D5235CD90D00C10963 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8CB235CD90D00C10963 /* SessionDelegate.swift */; };
 		97512043235C4B430030A2AC /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97512042235C4B430030A2AC /* PaymentViewController.swift */; };
 		97512045235C72500030A2AC /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97512044235C72500030A2AC /* CustomAlert.swift */; };
 		97512047235C77160030A2AC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97512046235C77160030A2AC /* Utils.swift */; };
@@ -47,6 +57,16 @@
 		974807CA235BC61E006FBAEB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		974807CD235BC822006FBAEB /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		974807D0235BCB74006FBAEB /* DonorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorViewController.swift; sourceTree = "<group>"; };
+		9749F8C0235CD90D00C10963 /* WebUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebUtil.swift; sourceTree = "<group>"; };
+		9749F8C1235CD90D00C10963 /* JSONUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtil.swift; sourceTree = "<group>"; };
+		9749F8C3235CD90D00C10963 /* TaskDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDelegate.swift; sourceTree = "<group>"; };
+		9749F8C4235CD90D00C10963 /* WebServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
+		9749F8C5235CD90D00C10963 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		9749F8C6235CD90D00C10963 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
+		9749F8C8235CD90D00C10963 /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		9749F8C9235CD90D00C10963 /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
+		9749F8CA235CD90D00C10963 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		9749F8CB235CD90D00C10963 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		97512042235C4B430030A2AC /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		97512044235C72500030A2AC /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		97512046235C77160030A2AC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -113,6 +133,8 @@
 		974807AF235BA7F3006FBAEB /* OpportunityHack */ = {
 			isa = PBXGroup;
 			children = (
+				9749F8BE235CD90D00C10963 /* WebServices */,
+				9749F8BD235CD8F800C10963 /* New Group */,
 				974807CF235BCB61006FBAEB /* Donor */,
 				974807C7235BC476006FBAEB /* Register */,
 				974807CC235BC625006FBAEB /* Login */,
@@ -165,6 +187,54 @@
 				97512042235C4B430030A2AC /* PaymentViewController.swift */,
 			);
 			path = Donor;
+			sourceTree = "<group>";
+		};
+		9749F8BD235CD8F800C10963 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		9749F8BE235CD90D00C10963 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				9749F8BF235CD90D00C10963 /* WebUtils */,
+				9749F8C2235CD90D00C10963 /* Networking */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		9749F8BF235CD90D00C10963 /* WebUtils */ = {
+			isa = PBXGroup;
+			children = (
+				9749F8C0235CD90D00C10963 /* WebUtil.swift */,
+				9749F8C1235CD90D00C10963 /* JSONUtil.swift */,
+			);
+			path = WebUtils;
+			sourceTree = "<group>";
+		};
+		9749F8C2235CD90D00C10963 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9749F8C3235CD90D00C10963 /* TaskDelegate.swift */,
+				9749F8C4235CD90D00C10963 /* WebServiceManager.swift */,
+				9749F8C5235CD90D00C10963 /* Service.swift */,
+				9749F8C6235CD90D00C10963 /* NetworkServiceManager.swift */,
+				9749F8C7235CD90D00C10963 /* Upload */,
+				9749F8CB235CD90D00C10963 /* SessionDelegate.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9749F8C7235CD90D00C10963 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				9749F8C8235CD90D00C10963 /* MultipartFormData.swift */,
+				9749F8C9235CD90D00C10963 /* Upload.swift */,
+				9749F8CA235CD90D00C10963 /* NetworkError.swift */,
+			);
+			path = Upload;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,17 +355,27 @@
 				974807CB235BC61E006FBAEB /* LoginViewController.swift in Sources */,
 				97512043235C4B430030A2AC /* PaymentViewController.swift in Sources */,
 				974807B5235BA7F3006FBAEB /* HomeController.swift in Sources */,
+				9749F8D3235CD90D00C10963 /* Upload.swift in Sources */,
 				974807C9235BC4AD006FBAEB /* RegisterViewController.swift in Sources */,
+				9749F8CC235CD90D00C10963 /* WebUtil.swift in Sources */,
 				974807C6235BC36A006FBAEB /* GradientButton.swift in Sources */,
 				97512047235C77160030A2AC /* Utils.swift in Sources */,
 				974807B1235BA7F3006FBAEB /* AppDelegate.swift in Sources */,
+				9749F8D4235CD90D00C10963 /* NetworkError.swift in Sources */,
 				970F6057235C189100C390D8 /* MyTextField.swift in Sources */,
 				974807D1235BCB74006FBAEB /* DonorViewController.swift in Sources */,
 				974807CE235BC822006FBAEB /* ViewManager.swift in Sources */,
 				970F605B235C2E7300C390D8 /* User.swift in Sources */,
 				970F6059235C198900C390D8 /* UIColorExtension.swift in Sources */,
+				9749F8CE235CD90D00C10963 /* TaskDelegate.swift in Sources */,
+				9749F8D5235CD90D00C10963 /* SessionDelegate.swift in Sources */,
+				9749F8D1235CD90D00C10963 /* NetworkServiceManager.swift in Sources */,
+				9749F8CF235CD90D00C10963 /* WebServiceManager.swift in Sources */,
+				9749F8D2235CD90D00C10963 /* MultipartFormData.swift in Sources */,
 				970F6055235C180100C390D8 /* TextFieldsEffects.swift in Sources */,
 				974807B3235BA7F3006FBAEB /* SceneDelegate.swift in Sources */,
+				9749F8D0235CD90D00C10963 /* Service.swift in Sources */,
+				9749F8CD235CD90D00C10963 /* JSONUtil.swift in Sources */,
 				97512045235C72500030A2AC /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

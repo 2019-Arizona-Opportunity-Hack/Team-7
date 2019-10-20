@@ -15,12 +15,12 @@ import ARSLineProgress
 class DonorViewController: UIViewController {
     
     var userName: String?
-    
+    var id : String?
     @IBOutlet weak var greetLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        greetLabel.text = userName?.isEmpty ?? true ? "Hello!!!" : "Hello\n\(String(describing: userName))"
+        greetLabel.text = userName?.isEmpty ?? true ? "Hello!!!" : "Hello \(String(describing: userName!))"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
     }
     
@@ -36,6 +36,7 @@ class DonorViewController: UIViewController {
         let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
 
         let url = Utils.donate
+        
         AF.download(
             url,
             method: .get,
@@ -60,8 +61,9 @@ class DonorViewController: UIViewController {
     
     @IBAction func donateTapped(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
-            self.navigationController?.pushViewController(loginVC, animated: true)
+        if let vc = mainStoryboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+            vc.id = id
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

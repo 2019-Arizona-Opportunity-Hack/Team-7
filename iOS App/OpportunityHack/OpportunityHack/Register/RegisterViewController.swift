@@ -54,22 +54,52 @@ class RegisterViewController: UIViewController {
             ]
             // header to be sent in the post request if required
             let urlString = Utils.register
-            AF.request(urlString, method: .post, parameters: parameters)
-                .responseJSON { response in
-                    switch response.result {
-                    case .success:
-                        print(response)
-                        ARSLineProgress.showSuccess()
-                        ViewManager.updateLoggedInRootVC()
-
-                        break
-                    case .failure(let error):
+            let header: HTTPHeaders = [HTTPHeader(name: "Content-Type", value: "application/json")]
+            
+            let request = ParameterEncoding.json.encode(urlString, bodyParameters:parameters)
+            _ = WebServiceManager.sharedInstance.fetchRequest(request).responseJSON {[weak self] (_, response, error) in
+                guard let weakself = self else {return}
+                
+                DispatchQueue.main.async {
+                guard let responseDict = response as? [String: Any] else {
+                    ARSLineProgress.showFail()
+                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+                    return
+                }
+                
+                    if let result = responseDict["statusCode"] as? Double, result != 200 {
                         ARSLineProgress.showFail()
                         CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
-                        print(error)
-                        
+                    } else {
+                        if let id  = responseDict["id"] as? String, let user = responseDict["user"] as? [String:Any], let name = user["firstName"] as? String{
+                            ARSLineProgress.showSuccess()
+                            ViewManager.updateLoggedInRootVC(id, name: name)
+                            
+                        } else {
+                            ARSLineProgress.showFail()
+                            CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+                        }
+
                     }
+                
             }
+            }
+//            AF.request(urlString, method: .post, parameters: parameters)
+//                .responseJSON { response in
+//                    switch response.result {
+//                    case .success:
+//                        print(response)
+//                        ARSLineProgress.showSuccess()
+//                        ViewManager.updateLoggedInRootVC()
+//
+//                        break
+//                    case .failure(let error):
+//                        ARSLineProgress.showFail()
+//                        CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+//                        print(error)
+//
+//                    }
+//            }
                         
         } else {
             //show error

@@ -43,33 +43,85 @@ class LoginViewController: UIViewController {
         if isResisterEnabled(){
             ARSLineProgress.show()
             let parameters: [String: String] = [
-                "email": emailTF.text!,
-                "password": passTF.text!,
+                "email": emailTF.text as! String,
+                "password": passTF.text as! String,
             ]
 
             let urlString = Utils.login
-            AF.request(urlString, method: .post, parameters: parameters)
-                .responseJSON { response in
+            let header: HTTPHeaders = [HTTPHeader(name: "Content-Type", value: "application/json")]
+
+            let request = ParameterEncoding.json.encode(urlString, bodyParameters:parameters)
+            _ = WebServiceManager.sharedInstance.fetchRequest(request).responseJSON {[weak self] (_, response, error) in
+                guard let weakself = self else {return}
+                
+                DispatchQueue.main.async {
+                    
+                guard let responseDict = response as? [String: Any] else {
+                    ARSLineProgress.showFail()
+                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+                    return
+                }
+                
+                    if let result = responseDict["statusCode"] as? Double, result != 200 {
+                        ARSLineProgress.showFail()
+                        CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+                    } else {
+                        if let id  = responseDict["id"] as? String, let user = responseDict["user"] as? [String:Any], let name = user["firstName"] as? String{
+                            ARSLineProgress.showSuccess()
+                            ViewManager.updateLoggedInRootVC(id, name: name)
+                            
+                        } else {
+                            ARSLineProgress.showFail()
+                            CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+                        }
+                    }
+//                else {
+//                    ARSLineProgress.showFail()
+//                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+//                    print(error)
+//
+//                }
+                }
+
+            }
+            /*
+            AF.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON { response in
+
+                if let data = response.data {
+                    print(response)
+                    print("REQUEST \n\n + \(response.request?.httpBody)")
+                    print("REQUEST \n\n + \(response.response)")
+
+                    let json = String(data: data, encoding: String.Encoding.utf8)
+                    print("Response: \(json)")
+                }
+            }
+
+            AF.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: header)
+                .responseString { response in
                     switch response.result {
                     case .success:
                         print(response)
+                        print("REQUEST \n\n + \(response.request?.httpBody)")
+                        print("REQUEST \n\n + \(response.response)")
                         ARSLineProgress.showSuccess()
                         ViewManager.updateLoggedInRootVC()
 
                         break
                     case .failure(let error):
+                        ARSLineProgress.showFail()
                         CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
                         print(error)
-                        ARSLineProgress.showFail()
                     }
             }
-            
+            */
         } else {
             //show error
             ARSLineProgress.showFail()
             CustomAlert.showAlert(title: "Missing Data!!!", message: "Please fill all the mandatory fields", cancelButtonTitle: "Ok")
 
         }
+ 
         
     }
     

@@ -20,6 +20,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var pmIconImgView: UIImageView!
     
     var methodDesc: String!
+    var id : String?
+
     @IBOutlet weak var pmHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pmIconWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var addPayment: UIButton!
@@ -95,27 +97,53 @@ class PaymentViewController: UIViewController {
         ARSLineProgress.show()
         
         let parameters: [String: String] = [
-            "id": UserDefaults.standard.string(forKey: Utils.donorIDKey) ?? "",
+            "donor": UserDefaults.standard.string(forKey: Utils.donorIDKey) ?? "",
             "amount": donationAmountTF.text ?? "0",
         ]
 
         let urlString = Utils.donate
-        AF.request(urlString, method: .post, parameters: parameters)
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    ARSLineProgress.showSuccess()
-                    print(response)
-                    CustomAlert.showAlert(title: "Success!!!", message: "Thank you for your generous donation", cancelButtonTitle: "Ok")
-
-                    break
-                case .failure(let error):
+        
+        let request = ParameterEncoding.json.encode(urlString, bodyParameters:parameters)
+        _ = WebServiceManager.sharedInstance.fetchRequest(request).responseJSON {[weak self] (_, response, error) in
+            guard let weakself = self else {return}
+            
+            DispatchQueue.main.async {
+                guard let responseDict = response as? [String: Any] else {
                     ARSLineProgress.showFail()
                     print(error)
                     CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
-
+                    return
                 }
+                
+                if let result = responseDict["statusCode"] as? Double, result != 200{
+                    ARSLineProgress.showFail()
+                    print(error)
+                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+                } else  {
+                    ARSLineProgress.showSuccess()
+                    print(response)
+                    CustomAlert.showAlert(title: "Success!!!", message: "Thank you for your generous donation", cancelButtonTitle: "Ok")
+                }
+                
+            }
         }
+
+//        AF.request(urlString, method: .post, parameters: parameters)
+//            .responseJSON { response in
+//                switch response.result {
+//                case .success:
+//                    ARSLineProgress.showSuccess()
+//                    print(response)
+//                    CustomAlert.showAlert(title: "Success!!!", message: "Thank you for your generous donation", cancelButtonTitle: "Ok")
+//
+//                    break
+//                case .failure(let error):
+//                    ARSLineProgress.showFail()
+//                    print(error)
+//                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+//
+//                }
+//        }
 
     }
     
