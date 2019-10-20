@@ -32,6 +32,7 @@
 		9749F8D3235CD90D00C10963 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8C9235CD90D00C10963 /* Upload.swift */; };
 		9749F8D4235CD90D00C10963 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8CA235CD90D00C10963 /* NetworkError.swift */; };
 		9749F8D5235CD90D00C10963 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8CB235CD90D00C10963 /* SessionDelegate.swift */; };
+		9749F8D7235CF87800C10963 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749F8D6235CF87800C10963 /* PDFViewController.swift */; };
 		97512043235C4B430030A2AC /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97512042235C4B430030A2AC /* PaymentViewController.swift */; };
 		97512045235C72500030A2AC /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97512044235C72500030A2AC /* CustomAlert.swift */; };
 		97512047235C77160030A2AC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97512046235C77160030A2AC /* Utils.swift */; };
@@ -67,6 +68,7 @@
 		9749F8C9235CD90D00C10963 /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		9749F8CA235CD90D00C10963 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9749F8CB235CD90D00C10963 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		9749F8D6235CF87800C10963 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		97512042235C4B430030A2AC /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		97512044235C72500030A2AC /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		97512046235C77160030A2AC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				974807BE235BA7F7006FBAEB /* Info.plist */,
 				974807CD235BC822006FBAEB /* ViewManager.swift */,
 				970F605A235C2E7300C390D8 /* User.swift */,
+				9749F8D6235CF87800C10963 /* PDFViewController.swift */,
 			);
 			path = OpportunityHack;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				974807CB235BC61E006FBAEB /* LoginViewController.swift in Sources */,
 				97512043235C4B430030A2AC /* PaymentViewController.swift in Sources */,
 				974807B5235BA7F3006FBAEB /* HomeController.swift in Sources */,
+				9749F8D7235CF87800C10963 /* PDFViewController.swift in Sources */,
 				9749F8D3235CD90D00C10963 /* Upload.swift in Sources */,
 				974807C9235BC4AD006FBAEB /* RegisterViewController.swift in Sources */,
 				9749F8CC235CD90D00C10963 /* WebUtil.swift in Sources */,

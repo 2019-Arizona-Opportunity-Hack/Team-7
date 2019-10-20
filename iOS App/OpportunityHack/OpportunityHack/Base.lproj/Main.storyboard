@@ -128,7 +128,7 @@ Make a difference !!!</string>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="RKr-Ye-A8Y"/>
                                     <constraint firstAttribute="height" constant="50" id="SV2-G1-BOl"/>
                                 </constraints>
-                                <state key="normal" title="Download">
+                                <state key="normal" title="Download &amp; View">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -447,7 +447,7 @@ Make a difference !!!</string>
                                 <rect key="frame" x="37.666666666666657" y="460" width="300" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Terms &amp; Condition">
-                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                         </subviews>
@@ -580,7 +580,7 @@ Make a difference !!!</string>
                                 <rect key="frame" x="37.666666666666657" y="422.33333333333331" width="300" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Terms &amp; Condition">
-                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                         </subviews>

@@ -13,7 +13,7 @@ struct Utils {
     static let login = host + "/login"
     static let register = host + "/app/register"
     static let donate = host + "/donation"
-    static let pdfreport = host + "/pdfreport/" + (UserDefaults.standard.string(forKey: Utils.donorIDKey) ?? "")
+    static let pdfreport = host + "/" + (UserDefaults.standard.string(forKey: Utils.donorIDKey) ?? "") + "/pdfreport"
 
     static let donorIDKey = "donorID"
 }

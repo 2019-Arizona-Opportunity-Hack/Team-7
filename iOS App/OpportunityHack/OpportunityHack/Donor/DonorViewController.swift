@@ -11,6 +11,7 @@ import BraintreeDropIn
 import Braintree
 import Alamofire
 import ARSLineProgress
+import SafariServices
 
 class DonorViewController: UIViewController {
     
@@ -35,29 +36,59 @@ class DonorViewController: UIViewController {
     @IBAction func downloadTapped(_ sender: Any) {
         let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
 
-        let url = Utils.donate
+        let urlstr = Utils.pdfreport
+//        ARSLineProgress.show()
+
+        guard let url = URL(string: urlstr) else { return }
         
-        AF.download(
-            url,
-            method: .get,
-            parameters: nil,
-            headers: nil,
-            to: destination).downloadProgress(closure: { (progress) in
-                ARSLineProgress.showWithProgressObject(progress)
-                //progress closure
-            }).response(completionHandler: { (DefaultDownloadResponse) in
-                //here you able to access the DefaultDownloadResponse
-                //result closure
-                switch DefaultDownloadResponse.result {
-                case .success:
-                    ARSLineProgress.showSuccess()
-                    break
-                case .failure(let error):
-                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
-                    print(error)
-                }
-            })
+        let destinationUrl: NSURL = NSURL(string: urlstr)!
+
+        let safari: SFSafariViewController = SFSafariViewController(url: destinationUrl as URL)
+        self.present(safari, animated: true, completion: nil)
+        
+//        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+//
+//        let downloadTask = urlSession.downloadTask(with: url)
+//        downloadTask.resume()
+        
+//        AF.download(
+//            url,
+//            method: .get,
+//            parameters: nil,
+//            headers: nil,
+//            to: destination).downloadProgress(closure: { (progress) in
+//                ARSLineProgress.showWithProgressObject(progress)
+//                //progress closure
+//            }).response(completionHandler: { (DefaultDownloadResponse) in
+//                //here you able to access the DefaultDownloadResponse
+//                //result closure
+//                switch DefaultDownloadResponse.result {
+//                case .success:
+//                    ARSLineProgress.showSuccess()
+//                    break
+//                case .failure(let error):
+//                    ARSLineProgress.showFail()
+//                    CustomAlert.showAlert(title: "Error!!!", message: "Please try again", cancelButtonTitle: "Ok")
+//                    print(error)
+//                }
+//            })
     }
+    
+//    func movePDF(from location: URL){
+//        guard let url = downloadTask.originalRequest?.url else { return }
+//        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+//        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+//        // delete original copy
+//        try? FileManager.default.removeItem(at: destinationURL)
+//        // copy from temp to Document
+//        do {
+//            try FileManager.default.copyItem(at: location, to: destinationURL)
+//            self.pdfURL = destinationURL
+//        } catch let error {
+//            print("Copy Error: \(error.localizedDescription)")
+//        }
+//        
+//    }
     
     @IBAction func donateTapped(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -66,6 +97,7 @@ class DonorViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
     
 }
     
@@ -148,3 +180,11 @@ class DonorViewController: UIViewController {
 //        // ...
 //    }
 //}
+
+extension DonorViewController:  URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("downloadLocation:", location)
+        ARSLineProgress.hide()
+    }
+    
+}
