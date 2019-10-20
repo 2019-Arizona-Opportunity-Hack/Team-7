@@ -98,12 +98,11 @@ export default function CreateEvent() {
     });
 
     const handleSubmit = () => {
-        axios.post('/event', {
+        axios.post('http://localhost:8080/event', {
             'location': location,
             'name': name,
             'date': date,
-            'duration': duration,
-            '': sendEmails.volunteers
+            'duration': duration
         })
             .then((response) => {
                 console.log(response);
@@ -124,11 +123,18 @@ export default function CreateEvent() {
                     <Grid container spacing={3}>
                         <Grid item xs={12} md={6}>
                             <TextField required id="name" label="Event name" fullWidth
-                                value={name} onChange={setName} />
+                                value={name} onChange={event => {
+                                    event.preventDefault();
+                                    setName(event.target.value);
+                                  }} />
                         </Grid>
                         <Grid item xs={12} md={6}>
                             <TextField required id="location" label="Event Location" fullWidth
-                                value={location} onChange={setLocation} />
+                                value={location} 
+                                onChange={event => {
+                                    event.preventDefault();
+                                    setLocation(event.target.value);
+                                  }} />
                         </Grid>
                         <Grid item xs={6} md={6}>
                             <TextField
@@ -136,21 +142,26 @@ export default function CreateEvent() {
                                 label="Event Date"
                                 type="date"
                                 defaultValue="2019-10-19"
-                                // className={classes.textField}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                value={date} onChange={setDate}
+                                value={date} onChange={event => {
+                                    event.preventDefault();
+                                    setDate(event.target.value);
+                                  }}
                             />
-                            </Grid>
+                            </Grid> 
                         <Grid item xs={12} md={6}>
                             <TextField required id="duration" label="Event duration" fullWidth
-                                value={duration} onChange={setDuration} />
+                                value={duration} onChange={event => {
+                                    event.preventDefault();
+                                    setDuration(event.target.value);
+                                  }} />
                         </Grid>
                         <Grid item xs={12} md={6}>
                             <Typography variant="h6" gutterBottom>
                                 Send Emails to:
-         </Typography>
+                             </Typography>
          <FormGroup row>
                             <FormControlLabel
                                 control={
