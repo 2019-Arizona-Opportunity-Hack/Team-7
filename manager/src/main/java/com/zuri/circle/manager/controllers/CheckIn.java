@@ -23,7 +23,7 @@ public class CheckIn {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/checkIn")
 	public @ResponseBody ResponseEntity<Response> handleCheckIn(@RequestBody CheckInEvent checkIn){
-		
+		System.out.println(checkIn.getEmail() + "jkakjdakj" +"   "+checkIn.getEventId());
 		if(checkIn!=null) {
 			if(checkInService.handleCheckIn(checkIn))
 				return new ResponseEntity<Response>(new Response(HttpStatus.OK.toString(), true, null),HttpStatus.ACCEPTED);
