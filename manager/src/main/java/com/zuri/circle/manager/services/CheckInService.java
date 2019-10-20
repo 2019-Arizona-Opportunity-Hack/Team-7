@@ -30,7 +30,7 @@ public class CheckInService {
 		
 		if(strVolunteerId!=null && StringUtils.isNotBlank(strVolunteerId)
 				&& strEventId!=null && StringUtils.isNotBlank(strEventId)) {
-		    Optional<Volunteer> volunteer =  volunteerRepo.findByEmail(strEventId);
+		    Optional<Volunteer> volunteer =  volunteerRepo.findByEmail(strVolunteerId);
 		    if(volunteer.isPresent())
 		    {
 		    	System.out.println("here");
