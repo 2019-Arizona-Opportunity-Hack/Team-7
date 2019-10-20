@@ -71,7 +71,7 @@ export default function DetailedExpansionPanel() {
       // });
       axios.get('http://54.172.164.131:8080/events')
       .then(res => {
-        console.log(res);
+        console.log(res.data.events);
         setData(res.data.events);
       });
   }, []);
@@ -106,7 +106,7 @@ export default function DetailedExpansionPanel() {
             </div>
             <div className={classes.column}>
               <Typography variant="caption">
-                Volunteer Count: {event.volunteers ? event.volunteer.length : 0}
+                Volunteer Count: {event.volunteers ? event.volunteers.length : 0}
                 <br />
                 Duration: {event.duration}
               </Typography>
