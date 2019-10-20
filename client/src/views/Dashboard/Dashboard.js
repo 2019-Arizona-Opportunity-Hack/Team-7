@@ -46,12 +46,12 @@ const Dashboard = () => {
       setTotalRevenue(responseArr[2].data.totalRevenue);
       setTotalVolunteer(responseArr[2].data.totalVolunteers);
       setTotalEvents(responseArr[0].data.totalEvents);
-      setUpcomingEvents(responseArr[0].data.upcomingEvents);
+      setUpcomingEvents(responseArr[0].data.events.length);
       const topDonationList = [];
       if(responseArr[1].data.topDonations){
         responseArr[1].data.topDonations.map((element, index) => {
           console.log(element);
-          if(index < 5)
+          if(index < 7)
           topDonationList[index] = {
             'amount': element.amount,
             // 'donationDate':element.date,
