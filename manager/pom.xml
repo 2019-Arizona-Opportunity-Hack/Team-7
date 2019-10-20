@@ -6,7 +6,7 @@
 
 	<groupId>com.zuri.circle</groupId>
 	<artifactId>manager</artifactId>
-	<packaging>war</packaging>
+	
 	<version>0.0.1-SNAPSHOT</version>
 	<name>manager</name>
 	<description>HackathonProject</description>
@@ -186,16 +186,10 @@
                             <directory>${project.basedir}/target</directory>
                              <targetPath>/</targetPath>
                             <includes>
-                                <include>*.war</include>
+                                <include>*.jar</include>
                             </includes>
                         </resource>
-                    <resource>
-                            <directory>${project.basedir}</directory>
-                            <targetPath>/</targetPath>
-                            <includes>
-                                <include>web.config</include>
-                            </includes>
-                        </resource> 
+                   
                     </resources>
                
             </configuration>
