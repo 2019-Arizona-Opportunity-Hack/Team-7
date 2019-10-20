@@ -14,55 +14,79 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zuri.circle.manager.constants.ZuriConstants;
+import com.zuri.circle.manager.exceptions.AddNeedHelp_Exception;
+import com.zuri.circle.manager.exceptions.AddVolunteer_Exception;
 import com.zuri.circle.manager.exceptions.ZuriException;
 import com.zuri.circle.manager.models.Response;
 import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.services.DonorService;
+import com.zuri.circle.manager.services.NeedHelpService;
+import com.zuri.circle.manager.services.VolunteerService;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Register {
 	public static Logger logger = LogManager.getLogger(Register.class);
-	
-	@Autowired
-     private  DonorService donorService;	
-	@RequestMapping(method = RequestMethod.POST, value = "/register")
-public @ResponseBody ResponseEntity<Response> register(@RequestBody User user) {
-		
-		logger.info("Entering the Register User Method", user);
-	        return register(user);
-	}	 
 
-	public ResponseEntity<Response> registerUser(User user){
-		
+	@Autowired
+	private DonorService donorService;
+	@Autowired
+	private VolunteerService volunteerService;
+	@Autowired
+	private NeedHelpService needHelp;
+
+	@RequestMapping(method = RequestMethod.POST, value = "/register")
+	public @ResponseBody ResponseEntity<Response> register(@RequestBody User user) {
+
+		logger.info("Entering the Register User Method", user);
+		return registerUser(user);
+	}
+
+	public ResponseEntity<Response> registerUser(User user) {
+
 		String strUserType = user.getUserType();
-		if(strUserType!=null && StringUtils.isNotBlank(strUserType) ) {
-			
-			if(strUserType.equalsIgnoreCase(ZuriConstants.USER_TYPE_NEED_HELP))
-			{
-				
-			}
-			if(strUserType.equalsIgnoreCase(ZuriConstants.USER_TYPE_DONOR))
-			{
+		if (strUserType != null && StringUtils.isNotBlank(strUserType)) {
+
+			if (strUserType.equalsIgnoreCase(ZuriConstants.USER_TYPE_NEED_HELP)) {
 				try {
-					if(donorService.addUser(user))
-						return new ResponseEntity<Response>(new Response(HttpStatus.OK.toString(), true, null),HttpStatus.OK);
-				} catch (ZuriException e) {
-					return new ResponseEntity<Response>(new Response(HttpStatus.INTERNAL_SERVER_ERROR.toString(), true, e.getErrorMessage()),HttpStatus.INTERNAL_SERVER_ERROR);
+					needHelp.addNeedHelp(user);
+					return new ResponseEntity<Response>(new Response(HttpStatus.OK.toString(), true, null),
+							HttpStatus.OK);
+				} catch (AddNeedHelp_Exception e) {
+					return new ResponseEntity<Response>(
+							new Response(HttpStatus.INTERNAL_SERVER_ERROR.toString(), true, e.getErrorMessage()),
+							HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 			}
-			if(strUserType.equalsIgnoreCase(ZuriConstants.USER_TYPE_VOLUNTEER))
-			{
-				
+			if (strUserType.equalsIgnoreCase(ZuriConstants.USER_TYPE_DONOR)) {
+				try {
+					if (donorService.addUser(user))
+						return new ResponseEntity<Response>(new Response(HttpStatus.OK.toString(), true, null),
+								HttpStatus.OK);
+				} catch (ZuriException e) {
+					return new ResponseEntity<Response>(
+							new Response(HttpStatus.INTERNAL_SERVER_ERROR.toString(), true, e.getErrorMessage()),
+							HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+			}
+			if (strUserType.equalsIgnoreCase(ZuriConstants.USER_TYPE_VOLUNTEER)) {
+
+				try {
+					volunteerService.addVolunteer(user);
+					
+					return new ResponseEntity<Response>(new Response(HttpStatus.OK.toString(), true, null),
+							HttpStatus.OK);
+				} catch (AddVolunteer_Exception e) {
+					return new ResponseEntity<Response>(
+							new Response(HttpStatus.INTERNAL_SERVER_ERROR.toString(), true, e.getErrorMessage()),
+							HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+
 			}
 		}
-		
+
 		return null;
-		
-		
-		
+
 	}
-	
-	
-	
+
 }

@@ -2,8 +2,9 @@ package com.zuri.circle.manager.services;
 
 import java.util.ArrayList;
 
-import org.jvnet.hk2.annotations.Service;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.mongodb.MongoWriteException;
 import com.zuri.circle.manager.exceptions.AddVolunteer_Exception;

@@ -3,6 +3,7 @@ package com.zuri.circle.manager.services;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.mongodb.MongoWriteException;
 import com.zuri.circle.manager.exceptions.*;
@@ -11,6 +12,7 @@ import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.models.Volunteer;
 import com.zuri.circle.manager.repo.NeedHelpRepo;
 
+@Service
 public class NeedHelpService {
 	
 	@Autowired

@@ -2,12 +2,13 @@ package com.zuri.circle.manager.services;
 
 import java.util.HashMap;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nimbusds.oauth2.sdk.util.StringUtils;
+
 import com.zuri.circle.manager.exceptions.ZuriException;
 import com.zuri.circle.manager.models.Donor;
 import com.zuri.circle.manager.models.User;
