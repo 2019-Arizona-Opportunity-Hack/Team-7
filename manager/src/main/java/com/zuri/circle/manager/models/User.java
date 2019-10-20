@@ -36,7 +36,11 @@ public class User implements Serializable {
 		this.country = country;
 		this.userType = userType;
 		this.preferredContact = preferredContact;
+
 		this.helpType = helpType;
+
+		
+
 	}
 
 
