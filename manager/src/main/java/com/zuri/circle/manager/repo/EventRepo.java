@@ -5,12 +5,9 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.zuri.circle.manager.models.Donor;
+import com.zuri.circle.manager.models.Events;
 
-public interface DonorRepo extends MongoRepository<Donor, String> {
-	
-	public Optional<Donor> findById(String id);
-	public Donor findByEmail(String email);
-	
-	
+public interface EventRepo extends MongoRepository<Events, String>{
 
+	public Events findByEventId(String id);
 }

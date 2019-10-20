@@ -4,13 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import com.zuri.circle.manager.models.Donations;
 import com.zuri.circle.manager.models.Donor;
 
-public interface DonorRepo extends MongoRepository<Donor, String> {
-	
-	public Optional<Donor> findById(String id);
-	public Donor findByEmail(String email);
-	
-	
+public interface DonationRepo extends MongoRepository<Donations, String>{
+	public Optional<Donations> findByDonationId(String id);
 
 }

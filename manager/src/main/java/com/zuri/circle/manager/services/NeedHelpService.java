@@ -1,15 +1,13 @@
 package com.zuri.circle.manager.services;
 
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mongodb.MongoWriteException;
-import com.zuri.circle.manager.exceptions.*;
+import com.zuri.circle.manager.exceptions.AddNeedHelp_Exception;
 import com.zuri.circle.manager.models.NeedHelp;
 import com.zuri.circle.manager.models.User;
-import com.zuri.circle.manager.models.Volunteer;
 import com.zuri.circle.manager.repo.NeedHelpRepo;
 
 @Service
@@ -17,12 +15,15 @@ public class NeedHelpService {
 	
 	@Autowired
 	NeedHelpRepo needHelpRepo;
+	@Autowired
+	EmailAsyncService asyncService;
 	
 	public void addNeedHelp(User user) throws AddNeedHelp_Exception{
 		if(user != null) {
 			try {
 				NeedHelp needy = new NeedHelp(null, user);
 				needHelpRepo.insert(needy);
+				asyncService.async2(user);
 			}catch(MongoWriteException e) {
 				throw new AddNeedHelp_Exception("Error while writing the object to database." + e.getMessage());
 			}
@@ -30,7 +31,4 @@ public class NeedHelpService {
 			throw new AddNeedHelp_Exception("The NeedHelp object is null");
 		}
 	}
-	
-	
-
 }

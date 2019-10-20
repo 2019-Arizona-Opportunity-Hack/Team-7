@@ -1,11 +1,13 @@
 package com.zuri.circle.manager.models;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "Donations")
 public class Donations implements Serializable{
 
 	/**
@@ -14,41 +16,51 @@ public class Donations implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String donationId;
-	private String donerId;
+	private Donor donor;
 	private String amount;
 	@CreatedDate
 	private Date donationDate;
-	public Donations(String donationId, String donarId, String amount, Date donationDate) {
+	
+	public Donations(String donationId, Donor donor, String amount) {
 		super();
 		this.donationId = donationId;
-		this.donerId = donarId;
+		this.donor = donor;
 		this.amount = amount;
-		this.donationDate = donationDate;
+		this.donationDate = new Date();
 	}
+
 	public Donations() {}
+
 	public String getDonationId() {
 		return donationId;
 	}
+
 	public void setDonationId(String donationId) {
 		this.donationId = donationId;
 	}
-	public String getDonerId() {
-		return donerId;
+
+	public Donor getDonor() {
+		return donor;
 	}
-	public void setDonerId(String donerId) {
-		this.donerId = donerId;
+
+	public void setDonor(Donor donor) {
+		this.donor = donor;
 	}
+
 	public String getAmount() {
 		return amount;
 	}
+
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
+
 	public Date getDonationDate() {
 		return donationDate;
 	}
+
 	public void setDonationDate(Date donationDate) {
 		this.donationDate = donationDate;
 	}
-
+	
 }

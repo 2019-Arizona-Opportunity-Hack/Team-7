@@ -19,13 +19,16 @@ public class DonorService {
 	
 	@Autowired
 	private DonorRepo donorRepo;
+	@Autowired
+	EmailAsyncService asyncService;
 	public static Logger logger = LogManager.getLogger(DonorService.class);
 	
 	public boolean  addUser(User user) throws ZuriException {
 		try {
 		if(user!=null) {
-			Donor donor =  new Donor(null,user, user.getEmail(), "0", new HashMap());
+			Donor donor =  new Donor(null,user, user.getEmail(), "0", new HashMap<String, String>(),user.getPassword());
 			donor = donorRepo.insert(donor);
+			asyncService.async2(user);
 			if(donor.getId()!=null && StringUtils.isNotBlank(donor.getId()))
 				return true;
 		}
@@ -34,6 +37,17 @@ public class DonorService {
 		}
 		
 		return false;
+	}
+
+	public Donor registerApp(User user) {
+	
+		Donor donor =  new Donor(null,user,user.getEmail(),"0",new HashMap<>(),user.getPassword());
+		donor = donorRepo.insert(donor);
+		asyncService.async2(user);
+		
+		return donor;
+		
+		
 	}
 	
 

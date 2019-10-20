@@ -18,7 +18,7 @@ public class Volunteer implements Serializable {
 	private String id;
 	private User user;
 	
-	private List<Events> listOfEvents;
+	private List<Events> listOfEvents = new ArrayList<Events>();
 	private String email;
 	
 	
@@ -28,7 +28,7 @@ public class Volunteer implements Serializable {
 		super();
 		this.id = id;
 		this.user = user;
-		this.listOfEvents = new ArrayList<Events>();
+	
 		this.email = email;
 	}
 

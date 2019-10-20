@@ -17,6 +17,7 @@ import com.zuri.circle.manager.constants.ZuriConstants;
 import com.zuri.circle.manager.exceptions.AddNeedHelp_Exception;
 import com.zuri.circle.manager.exceptions.AddVolunteer_Exception;
 import com.zuri.circle.manager.exceptions.ZuriException;
+import com.zuri.circle.manager.models.Donor;
 import com.zuri.circle.manager.models.Response;
 import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.services.DonorService;
@@ -24,7 +25,7 @@ import com.zuri.circle.manager.services.NeedHelpService;
 import com.zuri.circle.manager.services.VolunteerService;
 
 @RestController
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Register {
 	public static Logger logger = LogManager.getLogger(Register.class);
 
@@ -40,6 +41,16 @@ public class Register {
 
 		logger.info("Entering the Register User Method", user);
 		return registerUser(user);
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "app/register")
+	public @ResponseBody Donor registerApp(@RequestBody User user) {
+
+		logger.info("Entering the Register User Method", user);
+		return registerAppUser(user);
+	}
+	private Donor registerAppUser(User user) {
+	return donorService.registerApp(user);
 	}
 
 	public ResponseEntity<Response> registerUser(User user) {
