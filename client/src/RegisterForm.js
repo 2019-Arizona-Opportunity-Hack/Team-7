@@ -74,7 +74,9 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 150
+    minWidth: 300,
+    marginTop: "-45px",
+    marginLeft: "230px"
   },
   right: {
     float: "right",
@@ -87,6 +89,10 @@ const useStyles = makeStyles(theme => ({
   rightExtra: {
     float: "right",
     marginTop: "-32px"
+  },
+  someCss:{
+    marginTop: "30px",
+    marginBottom:"10px"
   }
 }));
 
@@ -189,6 +195,8 @@ export default function Checkout() {
                 />
               </RadioGroup>
             </div>
+            <div className={classes.someCss}>
+              Reason for Request:
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="reason">Reason </InputLabel>
               <Select
@@ -209,6 +217,9 @@ export default function Checkout() {
                 </MenuItem>
               </Select>
             </FormControl>
+            </div>
+            <div >
+            Requirements:
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="Request">Request </InputLabel>
               <Select
@@ -230,8 +241,10 @@ export default function Checkout() {
                 </MenuItem>
               </Select>
             </FormControl>
-            <div>Have you contacted any other resources?</div>
+            </div>
+            <div className={classes.top}>Have you contacted any other resources?
             <RadioGroup
+            className={classes.right}
               aria-label="alreadyRequested"
               name="alreadyRequested"
               value={isalreadyRequested}
@@ -254,7 +267,8 @@ export default function Checkout() {
                 labelPlacement="end"
               />
             </RadioGroup>
-          </div>
+            </div> 
+            </div>
         );
     }
     function phonenumber() {
