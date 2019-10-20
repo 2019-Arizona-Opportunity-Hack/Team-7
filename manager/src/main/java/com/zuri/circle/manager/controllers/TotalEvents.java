@@ -54,7 +54,7 @@ public class TotalEvents {
 		List<Events> res = new ArrayList<Events>();
 		if (list != null && !list.isEmpty()) {
 			for (Events e : list) {
-				if (e.getEventDate()!=null && e.getEventDate().after(today) || e.getEventDate().equals(today))
+				if (e!=null && e.getEventDate()!=null && (e.getEventDate().after(today) || e.getEventDate().equals(today)))
 					res.add(e);
 
 			}
