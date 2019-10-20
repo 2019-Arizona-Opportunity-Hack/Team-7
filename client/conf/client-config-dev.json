@@ -1,0 +1,7 @@
+{
+"proxy": "http://backendurl:port",
+"featureFlags":"value",
+"passwords":"12345",
+"adalConfig":{"tenant":"","clientId":"", "endpoints":{}, "redirectUri":"localhost:8080/home"},
+"googleanalyticsId":""
+}

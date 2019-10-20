@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import axios from 'axios';
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -59,26 +60,11 @@ export default function DetailedExpansionPanel() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    //   const result = await axios(
-    //     'https://localhost:8080/eventlist',
-    //   );
-    const result = {
-      events: [
-        {
-          title: "Event #1",
-          count: 10,
-          location: "Phoenix",
-          time: "31st Oct, 2019, 16:00pm"
-        },
-        {
-          title: "Event #2",
-          count: 10,
-          location: "Tempe",
-          time: "31st Oct, 2019, 16:00pm"
-        }
-      ]
-    };
-    setData(result.events);
+      axios.get('http://54.172.164.131:8080/events')
+      .then(res => {
+        console.log(res.data.events);
+        setData(res.data.events);
+      });
   }, []);
   return (
     <div className={classes.root}>
@@ -111,7 +97,9 @@ export default function DetailedExpansionPanel() {
             </div>
             <div className={classes.column}>
               <Typography variant="caption">
-                Volunteer Count: {event.count}
+                Volunteer Count: {event.volunteers ? event.volunteers.length : 0}
+                <br />
+                Duration: {event.duration}
               </Typography>
             </div>
           </ExpansionPanelDetails>

@@ -23,6 +23,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Redirect, Link } from "react-router-dom";
+import CheckInComponent from './checkIn';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -145,12 +146,16 @@ export default function PrimarySearchAppBar() {
             Admin Login
           </Button>
         </Link>
+        <Link to="/checkin">
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
           Check-In
         </Button>
+        </Link>
+        <Link to="/dashboard">
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
           Dashboard
         </Button>
+        </Link>
       </div>
     );
   };

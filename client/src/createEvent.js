@@ -98,7 +98,7 @@ export default function CreateEvent() {
     });
 
     const handleSubmit = () => {
-        axios.post('http://localhost:8080/event', {
+        axios.post('http://54.172.164.131:8080/event', {
             'location': location,
             'name': name,
             'date': date,

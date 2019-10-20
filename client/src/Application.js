@@ -20,6 +20,7 @@ import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 
 
 import Dashboard from './Dashboard';
+import CheckInComponent from "checkIn";
 
 function Application() {
   const [loggedIn, setLoggedIn] = React.useState(true);
@@ -45,6 +46,9 @@ function Application() {
               exact
               path="/dashboard"
             />
+            <Route exact path="/checkin">
+              <CheckInComponent/>
+            </Route>
             <Route exact path="/home">
               <Home />
             </Route>
