@@ -15,6 +15,15 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Redirect } from 'react-router';
+
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -84,6 +93,7 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [loginDialogOpen, setLoginDialogOpen] = React.useState(false);
 
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
@@ -98,9 +108,75 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
+  const loginDialog = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    setLoginDialogOpen(true);
+  };
+
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+
+  const FormDialog = ({setLoginDialogOpen}) => {
+    const [open, setOpen] = React.useState(loginDialogOpen);
+
+    const handleClickOpen = () => {
+      setLoginDialogOpen(true);
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setLoginDialogOpen(false);
+      setOpen(false);
+    };
+
+    const handleLogin = () => {
+      setLoginDialogOpen(false);
+      setOpen(false);
+    };
+  
+    return (
+      <div>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Admin Login
+        </Button>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              For admins to login to this website, please enter your email address and password here.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Email Address"
+              type="email"
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="password"
+              label="Password"
+              type="password"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleLogin} color="primary">
+              Login
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -113,8 +189,9 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={loginDialog}>
+        <FormDialog setLoginDialogOpen={setLoginDialogOpen}/>
+      </MenuItem>
     </Menu>
   );
 
@@ -130,14 +207,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
      
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+     
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
