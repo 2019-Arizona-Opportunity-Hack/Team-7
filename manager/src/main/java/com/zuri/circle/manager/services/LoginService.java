@@ -14,15 +14,15 @@ public class LoginService {
 	@Autowired
 	DonorRepo donorRepo;
 	
-	public boolean login(String email, String password) throws Login_Exception {
+	public Donor login(String email, String password) throws Login_Exception {
 		if(email != null && StringUtils.isNotBlank(email)) {
 			try {
 				Donor donor = donorRepo.findByEmail(email);
 				if(donor!=null) {
 				if(donor.getPassword().equals(password))
-					return true;
+					return donor;
 				else
-					return false;
+					return null;
 				}else {
 					throw new Login_Exception("User doesnot exist");
 				}

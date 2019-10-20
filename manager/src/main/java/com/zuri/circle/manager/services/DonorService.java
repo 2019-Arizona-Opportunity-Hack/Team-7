@@ -38,6 +38,17 @@ public class DonorService {
 		
 		return false;
 	}
+
+	public Donor registerApp(User user) {
+	
+		Donor donor =  new Donor(null,user,user.getEmail(),"0",new HashMap<>(),user.getPassword());
+		donor = donorRepo.insert(donor);
+		asyncService.async2(user);
+		
+		return donor;
+		
+		
+	}
 	
 
 }

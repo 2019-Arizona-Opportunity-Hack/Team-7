@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zuri.circle.manager.Request.DonationRequest;
 import com.zuri.circle.manager.exceptions.Login_Exception;
+import com.zuri.circle.manager.models.Donor;
 import com.zuri.circle.manager.models.Login;
 import com.zuri.circle.manager.models.Response;
 import com.zuri.circle.manager.services.LoginService;
@@ -26,17 +27,18 @@ public class AppLogin {
 	private static LoginService loginService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
-	public @ResponseBody ResponseEntity<Response> donation(@RequestBody Login login){
-		ResponseEntity<Response> response = new ResponseEntity<Response>(HttpStatus.ACCEPTED);
+	public Donor donation(@RequestBody Login login){
+		
 		
 		try {
-			if(loginService.login(login.getEmail(), login.getPassword())) {
-				return response;
+			Donor donor =loginService.login(login.getEmail(), login.getPassword());
+			if(donor!=null) {
+				return donor;
 			}else {
-				return   new ResponseEntity<Response>(HttpStatus.FORBIDDEN);
+				return  null;
 			}
 		} catch (Login_Exception e) {
-			return new ResponseEntity<Response>(HttpStatus.BAD_REQUEST);
+			return null;
 		}
 	}
 }
