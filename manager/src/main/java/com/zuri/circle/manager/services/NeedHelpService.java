@@ -15,12 +15,15 @@ public class NeedHelpService {
 	
 	@Autowired
 	NeedHelpRepo needHelpRepo;
+	@Autowired
+	EmailAsyncService asyncService;
 	
 	public void addNeedHelp(User user) throws AddNeedHelp_Exception{
 		if(user != null) {
 			try {
 				NeedHelp needy = new NeedHelp(null, user);
 				needHelpRepo.insert(needy);
+				asyncService.async2(user);
 			}catch(MongoWriteException e) {
 				throw new AddNeedHelp_Exception("Error while writing the object to database." + e.getMessage());
 			}

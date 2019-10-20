@@ -13,11 +13,14 @@ public class VolunteerService {
 	@Autowired
 	VolunteerRepo volunteerRepo;
 	
+	@Autowired
+	EmailAsyncService asyncService;
 	public void addVolunteer(User user) throws AddVolunteer_Exception{
 		if(user != null) {
 			try {
 				Volunteer volunteer = new Volunteer(null, user, user.getEmail());
 				volunteerRepo.insert(volunteer);
+				asyncService.async2(user);
 			}catch(MongoWriteException e) {
 				throw new AddVolunteer_Exception("Error while writing the object to database." + e.getMessage());
 			}

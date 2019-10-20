@@ -54,5 +54,30 @@ public class EmailService {
 
 	}
 
+	
+	public String sendMailRegister(User user, String url) throws Exception {
+		MimeMessagePreparator message = messageSender -> {
+			MimeMessageHelper helper = new MimeMessageHelper(messageSender);
+			InternetHeaders headers = new InternetHeaders();
+			headers.addHeader("Content-type", "text/html; charset=UTF-8");
+			String html = "Thank you for registering with Zuri";
+			MimeBodyPart body = new MimeBodyPart(headers, html.getBytes("UTF-8"));
+			helper.setTo(user.getEmail());
+			helper.setFrom("kmrprabhu93@gmail.com");
+			helper.setSubject("Registration Success");
+			// message.setText(content, true);
+			String content = mailBuilder.build(user.getFirstName(), html);
+			helper.setText(content, true);
+			
+		};
+
+		try {
+			mailSender.send(message);
+			return null;
+		} catch (MailException m) {
+			throw new Exception(m.getMessage());
+		}
+
+	}
 
 }

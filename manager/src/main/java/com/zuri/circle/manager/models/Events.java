@@ -1,6 +1,7 @@
 package com.zuri.circle.manager.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Events implements Serializable {
 	private String name;
 	private String duration;
 	private Date eventDate;
-	private List<Volunteer> volunteers;
+	private List<Volunteer> volunteers= new ArrayList<Volunteer>();
 	
 	public Events() {}
 
@@ -32,7 +33,7 @@ public class Events implements Serializable {
 		this.name = name;
 		this.duration = duration;
 		this.eventDate = eventDate;
-		this.volunteers = volunteers;
+		//this.volunteers = volunteers;
 	}
 
 

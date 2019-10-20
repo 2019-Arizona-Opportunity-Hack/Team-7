@@ -47,5 +47,23 @@ public class EmailAsyncService {
 		return CompletableFuture.completedFuture(null);
 	   
 	}
+	
+	
+	@Async("mailExecutor")
+	public  CompletableFuture<Void> async2(User user) {
+	    try {
+	    
+	    		
+	    		
+	    	
+	       emailNotific.sendMailRegister(user,null);
+	    
+	    } catch (Throwable t) {
+	        logger.debug(t.getMessage());
+	    }
+		return CompletableFuture.completedFuture(null);
+	   
+	}
+
 
 }

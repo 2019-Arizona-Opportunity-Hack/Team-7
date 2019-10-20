@@ -20,6 +20,18 @@ public class AsyncConfig {
 		taskExecutor.afterPropertiesSet();
 		return taskExecutor;
 	}
+	
+	
+
+	@Bean(name = "mailExecutor")
+	public TaskExecutor taskExecutor1() {
+		ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+		taskExecutor.setThreadNamePrefix("Async-");
+		taskExecutor.setMaxPoolSize(10);
+		taskExecutor.setQueueCapacity(10);
+		taskExecutor.afterPropertiesSet();
+		return taskExecutor;
+	}
 }
 
 	
