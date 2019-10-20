@@ -169,7 +169,7 @@
 
 
 	<build>
-    <plugins>
+   <plugins>
         <plugin>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-webapp-maven-plugin</artifactId>
@@ -180,21 +180,28 @@
                 <appName>zuricircle</appName>
                <!--  <deploymentType>ftp</deploymentType> -->
                 <stopAppDuringDeployment>true</stopAppDuringDeployment>
-               
+
                     <resources>
                         <resource>
                             <directory>${project.basedir}/target</directory>
                              <targetPath>/</targetPath>
                             <includes>
-                                <include>*.jar</include>
+                                <include>*.war</include>
                             </includes>
                         </resource>
-                   
+                    <resource>
+                            <directory>${project.basedir}</directory>
+                            <targetPath>/</targetPath>
+                            <includes>
+                                <include>web.config</include>
+                            </includes>
+                        </resource> 
                     </resources>
-               
+
             </configuration>
         </plugin>
     </plugins>
+
 </build>  
 
 </project>
