@@ -33,6 +33,7 @@ public class CheckInService {
 		    Optional<Volunteer> volunteer =  volunteerRepo.findByEmail(strEventId);
 		    if(volunteer.isPresent())
 		    {
+		    	System.out.println("here");
 		       List<Events> list =  volunteer.get().getListOfEvents();
 		       list.add(eventRepo.findByEventId(strEventId));
 		       volunteer.get().setListOfEvents(list);

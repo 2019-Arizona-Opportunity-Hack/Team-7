@@ -31,8 +31,9 @@ public class AppLogin {
 		
 		
 		try {
-			Donor donor =loginService.login(login.getEmail(), login.getPassword());
 			System.out.println(login.getEmail()+login.getPassword());
+			Donor donor =loginService.login(login.getEmail(), login.getPassword());
+		
 			if(donor!=null) {
 				return donor;
 			}else {
