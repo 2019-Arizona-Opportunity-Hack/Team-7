@@ -36,7 +36,7 @@ public class PdfGenerator {
 	@Autowired
 	DonationRepo donationrepo;
 	
-	@RequestMapping(value = "/{id}/pdfreport", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	@RequestMapping(value = "/pdfreport/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	 public ResponseEntity<InputStreamResource> donationReport(@PathVariable String id) {
 		Optional<Donor> donor = donorRepo.findById(id);
 		List<DonationReport> donationReport = new ArrayList<>();
