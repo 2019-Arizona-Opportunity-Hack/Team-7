@@ -20,9 +20,9 @@ public class Donor implements Serializable{
 	private User user;
 	private String email;
 	private String totalAmount;
-	private Map<Donations,String> donationStat = new HashMap<>();
+	private Map<String,String> donationStat = new HashMap<>();
 	
-	public Donor(String id, User user, String email, String totalAmount, Map<Donations, String> donationStat) {
+	public Donor(String id, User user, String email, String totalAmount, Map<String, String> donationStat) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -59,10 +59,10 @@ public Donor() {
 	public void setTotalAmount(String totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	public Map<Donations, String> getDonationStat() {
+	public Map<String, String> getDonationStat() {
 		return donationStat;
 	}
-	public void setDonationStat(Map<Donations, String> donationStat) {
+	public void setDonationStat(Map<String, String> donationStat) {
 		this.donationStat = donationStat;
 	}
 }

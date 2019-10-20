@@ -30,8 +30,10 @@ public class DonationService {
 				Donor donor = donorOptional.get();
 				Donations donation = new Donations(uuid,donor,amount);
 				donationRepo.insert(donation);
-				Map<Donations, String> donorRecord = donor.getDonationStat();
-				donorRecord.put(donation, amount);
+				Map<String, String> donorRecord = donor.getDonationStat();
+				donorRecord.put(uuid, amount);
+				int totalAmt = Integer.parseInt(donor.getTotalAmount()) + Integer.parseInt(amount);
+				donor.setTotalAmount(Integer.toString(totalAmt));
 				donorRepo.save(donor);
 			}catch(MongoWriteException e) {
 				throw new RegisterDonation_Exception("Error while writing the object to database." + e.getMessage());
