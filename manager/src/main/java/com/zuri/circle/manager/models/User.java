@@ -24,11 +24,13 @@ public class User implements Serializable {
 	private String isChildren;
 	private List<String> helpType;
 	private String reason;
+	private String password;
 	
 	public User(String firstName, String lastName, String email, String address, String city, String state, String zip,
 			String country, String userType, String preferredContact, String phoneNumber, String isMarried,
-			String isChildren, List<String> helpType, String reason) {
+			String isChildren, List<String> helpType, String reason, String password) {
 		super();
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -44,6 +46,16 @@ public class User implements Serializable {
 		this.isChildren = isChildren;
 		this.helpType = helpType;
 		this.reason = reason;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

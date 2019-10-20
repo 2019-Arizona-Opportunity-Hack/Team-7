@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zuri.circle.manager.Request.LoginRequest;
 import com.zuri.circle.manager.constants.ZuriConstants;
 import com.zuri.circle.manager.exceptions.AddNeedHelp_Exception;
 import com.zuri.circle.manager.exceptions.AddVolunteer_Exception;
+import com.zuri.circle.manager.exceptions.Login_Exception;
 import com.zuri.circle.manager.exceptions.ZuriException;
 import com.zuri.circle.manager.models.Response;
 import com.zuri.circle.manager.models.User;
 import com.zuri.circle.manager.services.DonorService;
+import com.zuri.circle.manager.services.LoginService;
 import com.zuri.circle.manager.services.NeedHelpService;
 import com.zuri.circle.manager.services.VolunteerService;
 
@@ -34,7 +37,8 @@ public class Register {
 	private VolunteerService volunteerService;
 	@Autowired
 	private NeedHelpService needHelp;
-
+	@Autowired
+	private LoginService loginService;
 	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	public @ResponseBody ResponseEntity<Response> register(@RequestBody User user) {
 
@@ -89,4 +93,26 @@ public class Register {
 
 	}
 
+	@RequestMapping(method = RequestMethod.POST, value = "/login")
+	public @ResponseBody ResponseEntity<Response> login(@RequestBody LoginRequest loginRequest) throws Login_Exception{
+		return null;
+		
+//		logger.info("Entering the Donation Method", loginRequest);
+//		try {
+//			if(loginService.login(loginRequest.getEmail(), loginRequest.getPassword())) {
+//				return new ResponseEntity<Response>(new Response(HttpStatus.OK.toString(), true, null),
+//						HttpStatus.OK);
+//			}
+//			else {
+//				return new ResponseEntity<Response>(new Response("Login failed", true, null),
+//						HttpStatus.BAD_REQUEST);
+//
+//			}
+//		}catch (Login_Exception e) {
+//			return new ResponseEntity<Response>(
+//					new Response(HttpStatus.INTERNAL_SERVER_ERROR.toString(), true, e.getErrorMessage()),
+//					HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+		
+	}
 }

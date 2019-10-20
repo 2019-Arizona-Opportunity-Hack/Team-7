@@ -19,11 +19,13 @@ public class Donor implements Serializable{
 	private String id;
 	private User user;
 	private String email;
+	private String password;
 	private String totalAmount;
 	private Map<String,String> donationStat = new HashMap<>();
 	
-	public Donor(String id, User user, String email, String totalAmount, Map<String, String> donationStat) {
+	public Donor(String id, User user, String email, String totalAmount, Map<String, String> donationStat, String password) {
 		super();
+		this.password = password;
 		this.id = id;
 		this.user = user;
 		this.email = email;
@@ -34,6 +36,17 @@ public class Donor implements Serializable{
 public Donor() {
 	
 }
+
+public String getPassword() {
+	return password;
+}
+
+
+public void setPassword(String password) {
+	this.password = password;
+}
+
+
 	public String getEmail() {
 		return email;
 	}
