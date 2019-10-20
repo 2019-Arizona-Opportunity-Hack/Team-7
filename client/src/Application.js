@@ -15,6 +15,12 @@ import Checkout from "./RegisterForm";
 import SignInSide from "./SignInSide.js";
 import PrimarySearchAppBar from "./Navigation";
 
+import { RouteWithLayout } from './components';
+import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
+
+
+import Dashboard from './Dashboard';
+
 function Application() {
   const [loggedIn, setLoggedIn] = React.useState(true);
   const renderView = () => {
@@ -34,7 +40,11 @@ function Application() {
             <Route exact path="/">
               <Checkout />
             </Route>
-
+            <Route
+              component={Dashboard}
+              exact
+              path="/dashboard"
+            />
             <Route exact path="/home">
               <Home />
             </Route>
