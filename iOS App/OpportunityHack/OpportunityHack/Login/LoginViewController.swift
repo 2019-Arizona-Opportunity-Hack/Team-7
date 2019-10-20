@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         isResisterEnabled()
-
+        passTF.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
     
