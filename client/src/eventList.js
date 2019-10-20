@@ -44,6 +44,12 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       textDecoration: "underline"
     }
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(2),
+    float: "right"
   }
 }));
 
@@ -79,7 +85,7 @@ export default function DetailedExpansionPanel() {
         Event Details
       </Typography>
       {data.map((event, index) => (
-        <ExpansionPanel defaultExpanded>
+        <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1c-content"
@@ -112,7 +118,13 @@ export default function DetailedExpansionPanel() {
         </ExpansionPanel>
       ))}
       <Link to="/createEvent">
-        <Button>Hello</Button>
+      <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                  >
+                    Create Event
+                  </Button>
       </Link>
     </div>
   );
