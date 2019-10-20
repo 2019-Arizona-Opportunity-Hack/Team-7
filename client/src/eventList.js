@@ -14,7 +14,8 @@ import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import CreateEvent from "./createEvent";
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%"
+    width: "80%",
+    marginLeft: "139px"
   },
   heading: {
     fontSize: theme.typography.pxToRem(15)
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0.8),
     float: "right"
   }
 }));
@@ -82,7 +83,7 @@ export default function DetailedExpansionPanel() {
   return (
     <div className={classes.root}>
       <Typography variant="h6" gutterBottom>
-        Event Details
+        <b>Event Details</b>
       </Typography>
       {data.map((event, index) => (
         <ExpansionPanel>
@@ -118,13 +119,9 @@ export default function DetailedExpansionPanel() {
         </ExpansionPanel>
       ))}
       <Link to="/createEvent">
-      <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                  >
-                    Create Event
-                  </Button>
+        <Button variant="contained" color="primary" className={classes.button}>
+          Create Event
+        </Button>
       </Link>
     </div>
   );

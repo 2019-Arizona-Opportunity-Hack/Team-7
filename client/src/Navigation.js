@@ -33,6 +33,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     display: "none",
+    fontSize: "45px",
+    marginLeft: theme.spacing(78),
     [theme.breakpoints.up("sm")]: {
       display: "block"
     }
@@ -143,6 +145,12 @@ export default function PrimarySearchAppBar() {
             Admin Login
           </Button>
         </Link>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Check-In
+        </Button>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Dashboard
+        </Button>
       </div>
     );
   };
@@ -193,16 +201,8 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Zuri's Cricle
+            Zuri's Circle
           </Typography>
 
           <div className={classes.grow} />
