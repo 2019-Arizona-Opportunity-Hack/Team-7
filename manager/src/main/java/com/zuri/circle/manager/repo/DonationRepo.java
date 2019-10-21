@@ -8,6 +8,6 @@ import com.zuri.circle.manager.models.Donations;
 import com.zuri.circle.manager.models.Donor;
 
 public interface DonationRepo extends MongoRepository<Donations, String>{
-	public Optional<Donor> findByDonationId(String id);
+	public Optional<Donations> findByDonationId(String id);
 
 }

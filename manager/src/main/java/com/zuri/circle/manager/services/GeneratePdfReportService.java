@@ -3,6 +3,7 @@ package com.zuri.circle.manager.services;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +26,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class GeneratePdfReportService {
 	public static Logger logger = LogManager.getLogger(DonorService.class);
 	
-	public ByteArrayInputStream generatedonationReport(DonationReport donationReport) {
+	public ByteArrayInputStream generatedonationReport(List<DonationReport> donationReport) {
 		Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -33,16 +34,16 @@ public class GeneratePdfReportService {
 
             PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(60);
-            table.setWidths(new int[]{1, 3, 3});
+            table.setWidths(new int[]{3, 4, 3});
 
             Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
             
             PdfPCell hcell;
-            hcell = new PdfPCell(new Phrase("DonationId", headFont));
+            hcell = new PdfPCell(new Phrase("Name", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
-            hcell = new PdfPCell(new Phrase("Name", headFont));
+            hcell = new PdfPCell(new Phrase("Date", headFont));
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
@@ -50,25 +51,26 @@ public class GeneratePdfReportService {
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
 
-
+            for (DonationReport report : donationReport) {
                 PdfPCell cell;
 
-                cell = new PdfPCell(new Phrase(donationReport.getDonationId().toString()));
+                cell = new PdfPCell(new Phrase(report.getDonorName()));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(donationReport.getDonorName()));
+                cell = new PdfPCell(new Phrase(report.getDonationDate().toString()));
                 cell.setPaddingLeft(5);
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 table.addCell(cell);
 
-                cell = new PdfPCell(new Phrase(String.valueOf(donationReport.getAmount())));
+                cell = new PdfPCell(new Phrase(String.valueOf(report.getAmount())));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 cell.setPaddingRight(5);
                 table.addCell(cell);
+            }
                 
             PdfWriter.getInstance(document, out);
             Phrase title = new Phrase("Donation Receipt", headFont);
@@ -78,7 +80,7 @@ public class GeneratePdfReportService {
             Phrase zuriCircle = new Phrase("Zuri Circle", headFont);
             title.setFont(headFont);
             Paragraph preface = new Paragraph();
-            preface.add(new Paragraph(" We have received your donation on " + new Date())+". Thank you for you kind donation.");
+            preface.add(new Paragraph(" Thank you for you kind donation."));
             document.open();
             document.add(title);
             document.add( Chunk.NEWLINE );
