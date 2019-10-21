@@ -27,9 +27,7 @@ public class AppLogin {
 	private  LoginService loginService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/login")
-	public Donor donation(@RequestBody Login login){
-		
-		
+	public Donor donation(@RequestBody Login login){				
 		try {
 			System.out.println(login.getEmail()+login.getPassword());
 			Donor donor =loginService.login(login.getEmail(), login.getPassword());
